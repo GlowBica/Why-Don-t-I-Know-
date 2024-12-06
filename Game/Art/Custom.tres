@@ -1,0 +1,58 @@
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=15 format=3 uid="uid://b8oapus0ankiq"]
+
+[ext_resource type="PackedScene" uid="uid://bmnnqdtxoty3s" path="res://Game/Art/Layout/CustomCustom/custom_custom.tscn" id="1_8dcih"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="1_vt653"]
+[ext_resource type="PackedScene" uid="uid://dhk6j6eb6e3q" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Choices/vn_choice_layer.tscn" id="2_1n1vv"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style.gd" id="2_eempj"]
+[ext_resource type="PackedScene" uid="uid://cn674foxwedqu" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn" id="3_c64i2"]
+[ext_resource type="PackedScene" uid="uid://cvgf4c6gg0tsy" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_TextInput/text_input_layer.tscn" id="4_hndcr"]
+[ext_resource type="PackedScene" uid="uid://cy1y14inwkplb" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Portraits/vn_portrait_layer.tscn" id="5_us2xt"]
+[ext_resource type="PackedScene" uid="uid://dfrymcwhq133w" path="res://Game/Art/Layout/VisualNovelTextbox/custom_visual_novel_textbox.tscn" id="6_aij8g"]
+
+[sub_resource type="Resource" id="Resource_wb0gj"]
+script = ExtResource("1_vt653")
+scene = ExtResource("1_8dcih")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_mekwu"]
+script = ExtResource("1_vt653")
+scene = ExtResource("2_1n1vv")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_nhaif"]
+script = ExtResource("1_vt653")
+scene = ExtResource("3_c64i2")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_vah4l"]
+script = ExtResource("1_vt653")
+scene = ExtResource("4_hndcr")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_0xtkv"]
+script = ExtResource("1_vt653")
+scene = ExtResource("5_us2xt")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_ishar"]
+script = ExtResource("1_vt653")
+scene = ExtResource("6_aij8g")
+overrides = {
+"box_panel": "\"vn_textbox_default_panel.tres\""
+}
+
+[resource]
+script = ExtResource("2_eempj")
+name = "Custom"
+layer_list = Array[String](["10", "11", "12", "13", "14"])
+layer_info = {
+"": SubResource("Resource_wb0gj"),
+"10": SubResource("Resource_mekwu"),
+"11": SubResource("Resource_nhaif"),
+"12": SubResource("Resource_vah4l"),
+"13": SubResource("Resource_0xtkv"),
+"14": SubResource("Resource_ishar")
+}
+base_overrides = {}
+layers = Array[ExtResource("1_vt653")]([])
+metadata/_latest_layer = "10"

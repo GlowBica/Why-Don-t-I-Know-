@@ -1,0 +1,481 @@
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+[background arg="res://Game/Art/Backgrounds/bedroom.png" fade="0.5"]
+[style name="Style"]
+join Mallory right
+Mallory (Concerned): “There are only 2 days left until my trial.”
+Mallory (Sad): “I wonder what’s going to happen to me.”
+Mallory: “I’m so close to finishing college. Will it have been for nothing?”
+Mallory (Concerned): “In a couple of months I would’ve been walking to receive my degree, and now…”
+Mallory (Sad): “And now all that time spent studying and working my ass off…”
+Mallory (Concerned): “My future might just go down the drain.”
+Mallory (Sad): “And all because I’m not even sure if I’m a murderer.”
+Mallory: “...”
+Mallory (Concerned): “Crying isn’t going to solve anything.”
+Mallory (Thinking): “What would Dolion do?”
+Mallory (Happy): “I bet she would fly to Mexico, haha.”
+Mallory (Neutral): “She would rather die than ‘lose’ to cops.”
+Mallory: “...”
+Mallory (Thinking): “Even though her temper is her biggest flaw…It's also what made me look up to her as kid…”
+Mallory: “She was always authentically herself…”
+Mallory (Neutral): “But I was also scared of defying her.”
+Mallory: “...”
+Mallory: “But no one is perfect.”
+Mallory: “...”
+Mallory (Thinking): “Maybe I should ask her to go to a pub since it's one of her favorite places to go.”
+- Call Dolion
+[style name="NoName"]
+*Ring Ring Ring*
+update Mallory (Neutral)
+[style name="Style"]
+Dolion: “Hello?”
+Mallory (Happy): “Hey! I-”
+Dolion: “What do you want?”
+Mallory (Neutral): “I- I was going to ask if you wanted to hit the pub near Square Street?”
+Dolion: “...”
+Dolion: “Dude, that fall really messed up your head…”
+Dolion: “It’s not every day my goody-two-shoes of a twin asks me to go to the pub!”
+Dolion: “But sure!”
+update Mallory (Happy)
+Dolion: “Thirty minutes sounds good?”
+Mallory (SuperHappy): “Yeah, sounds perfect!”
+Dolion: “Okay, I’ll see you there.”
+Mallory: “By-”
+[style name="NoName"]
+*Click*
+[style name="Style"]
+Mallory (Neutral): “...”
+Mallory: “She would never say goodbye over the phone…”
+Mallory (Thinking): “I really did forget a lot of things, huh…”
+leave Mallory
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+[wait time="1.0"]
+[background arg="res://Game/Art/Backgrounds/shop 1.png" fade="0.0"]
+join Dolion left
+Mallory (Happy): “You got here fast.”
+Dolion (Happy-Teeth): “You know I’m a sucker for booze!”
+Dolion (Neutral): “Oh, uh…”
+Dolion: “You do remember that right?...”
+Mallory: “Now I do!”
+Dolion: “...”
+Dolion (Upset): “Does it hurt to remember?”
+Mallory: “What?”
+Dolion (Annoyed): “Like in movies and in shows, the protagonist always has pain when they remember something.”
+Mallory: “Oh, not really.”
+Mallory: “It’s more like when you remember something you forgot.”
+Mallory: “Like when you remember something from high school or a song you haven’t heard in ages.”
+Mallory: “I only feel pain when it comes to… that day…”
+Dolion (Upset): “Oh…”
+Dolion: “...”
+Dolion (Neutral): “Enough of that, let’s forget that, at least for tonight!”
+Mallory: “Yeah, you’re right!”
+Dolion (Happy-Teeth): “How about we play 21 questions?”
+Dolion (Happy): “Maybe that will help you remember more?”
+Mallory: “Great idea!”
+Dolion (Happy): “We should record this and listen to it tomorrow because I know we’re going to forget!”
+Dolion (Happy-Teeth): “I’m going to make sure both you and I drink so much we black out!!!”
+- "Let's do it!"
+	Dolion (Happy-Teeth): “I’m liking this new version of you, Mal!”
+	Dolion: “Ask the first question!”
+	jump Fast Forward
+- "I don't feel comfortable..."
+	Dolion (Annoyed): “When are you going to stop being such a pussy?”
+	Dolion (Neutral): “Whatever, ask your first question…”
+	jump Fast Forward
+
+
+label Fast Forward
+leave --All--
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+[wait time="3.0"]
+[background arg="res://Game/Art/Backgrounds/shop 1.png" fade="0.5"]
+join Dolion (Happy-Teeth) left
+Dolion (Happy-Teeth): “BAHAHAHAH!!”
+Dolion: “You remember that???”
+Mallory: “Yeah, how could I forget hahahahaha!!”
+Dolion: “His face was so stupid hahahahaha”
+Mallory: “I know ahahahhaa”
+Dolion (Happy): “Shit, I think I drank too much hahahahaha”
+Mallory: “Me too…”
+Mallory: *hiccup*
+Dolion (Happy): “Who’s um, whooo’s turrrnnn is it again?...”
+Mallory: “Uhhhhh”
+Mallory: “Mine I th- *hiccup* -ink?”
+Dolion (Happy): “Ohhh, ok…”
+Dolion (Happy-Teeth): “Throw me a hard one!”
+- “What were you doing that night?
+	label What?
+	Dolion (Annoyed): “Whaaatttt?”
+	Dolion (Neutral): “I-I thought we weren’t going to-to bring that up?”
+	Mallory: “Right, sorry…”
+	Mallory: “I think the alcohol is just messing with my head, haha…”
+	Dolion (Happy): “It’s okaayy!”
+	Dolion (Happy-Teeth): “I know you’re just a little stupid…”
+	Dolion: “Ask meeeee a different question!”
+	jump Different Questions
+- “Where were you that night?”
+	jump What?
+- “Why was I there that night?”
+	jump What?
+
+label Different Questions
+- “Do you know if I knew my murder victim?”
+	Dolion (Annoyed): “Didn’t I say to notttt….”
+	Dolion: “Talk about this…”
+	Dolion (Neutral): *hiccup*
+	Dolion (Annoyed): “Whatever I guess…”
+	Dolion (Annoyed): “I don’t think you did?”
+	Dolion (Happy): “But Miss Secretive doesn’t always tell me things, so I can’t be too sure…”
+	- “If I didn’t know him, why would I kill him?”
+		label HowIKnow?
+		Dolion (Annoyed): “How would I know?”
+		Dolion (Happy): “Maybe you didn’t kill him at allllll…..”
+		Dolion (Neutral): “...”
+		Dolion (Happy-Teeth): “My turnnnnnn!!!!!!”
+		jump Dolion’s Turn
+	- “Was I the type to dislike people I don’t know?”
+		jump HowIKnow?
+	- “Am I really secretive?”
+		jump HowIKnow?
+
+- “Do you think I’ll be found guilty?”
+	Dolion (Annoyed): “Didn’t I say to notttt….”
+	Dolion: “Talk about this…?”
+	Dolion (Neutral): *hiccup*
+	Dolion (Happy): “Whatever I guess…”
+	Dolion (Neutral): “With all the evidence directed at you, it won’t be hard for the cops to pin this on you…”
+	Dolion (Annoyed): “They don’t care about the truth…”
+	Dolion: “So whether you did it or not doesn’t matter…”
+	Dolion (Neutral): *hiccup*
+	Dolion (Happy-Teeth): “My turnnnnnnn!!!!!”
+	jump Dolion’s Turn
+- “Do you know who sent the bloody Mexican letter?” | [if {Evidence.Letter} == true]
+	Dolion (Annoyed): “Didn’t I say to notttt….”
+	Dolion: “Talk about this…?”
+	Dolion (Neutral): *hiccup*
+	Dolion (Annoyed): “Why do you never listen to me…?”
+	- “Did you take it?”
+		Dolion (Annoyed): “What?...”
+		Mallory: “It’s not in my r-*hiccup* room where I left it?”
+		Mallory: “I l-looked everywhere in my room, and it d-disappeared…”
+		Dolion (Annoyed): “Are you ACCUSING me of theft?...”
+		Dolion (Angry): “WHAT THE HELL MALLORY?!”
+		- “I-I’m not accusing you…”
+			label Not What I Meant
+			Mallory: “I don’t care if-if you took it…”
+			Mallory: “I just wanted to know!”
+			Dolion (Annoyed): “Is this why you *hiccup* asked me to go to a pub?”
+			Dolion (Upset): “To get m-meee drunk…”
+			Dolion (Annoyed): “And interrogate me?!”
+			Mallory: “No, I…”
+			Mallory: “I just wanted to hang out…”
+			Dolion (Upset): “Hang o-out my ass!”
+			Dolion (Sad): “I-I am leaving!”
+			Dolion (Annoyed): “CHECK PLEASE!”
+			Mallory: “Dol-*hiccup* Dolion, come on…”
+			Dolion (Angry): “DON’T TOUCH ME!”
+			Mallory: “Dolion….”
+			[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+			[wait time="1.0"]
+			jump Argument
+		- “I-I’m just asking…”
+			jump Not What I Meant
+		- “W-Why are you overreacting?”
+			Dolion (Annoyed): “Overreacting?!”
+			Dolion (Angry): “You’re accusing me of stealing some dumb letter!”
+			Mallory: “That’s *hiccup* not what I meant…”
+			jump Not What I Meant
+- “Why was your lighter at the victim’s house that night?” | [if {Evidence.Lighter} == true]
+	Dolion (Happy): “Whaaaat?”
+	Mallory: “I found *hiccup* your lighter at the victim’s house…”
+	Dolion (Annoyed): “Myyy what?...”
+	Dolion (Neutral): “You’re joking right?...”
+	Mallory: “Joking?”
+	Dolion (Annoyed): “Why are you asking me about that?...”
+	- “I just want to know…”
+		Dolion: “Know what?!”
+		Dolion (Angry): “If I have something to do with YOUR victim's death?!”
+		jump Not What I Meant-2
+	- “Can you just answer the question?”
+		Dolion (Annoyed): “Watch your *hiccup* damn tone.”
+		Mallory: “Dolion, I just meant-”
+		Dolion (Neutral): “I knoooow what you meant!”
+		Dolion (Angry): “You’re IMPLYING that I *hiccup* have something to do with YOUR victim’s death!”
+		jump Not What I Meant-2
+- “Why were you at the plaza near the victim’s house that night?” | [if {Evidence.CCTV-2} == true]
+	Dolion (Happy): “Whaaaat?”
+	Mallory: “I saw a *hiccup* recording of you and Dad near the plaza that’s, uhm…”
+	Mallory: “What was I saying?...”
+	Mallory: “Right! Near the victim's house, like an hour later after he died…”
+	Dolion (Neutral): “You’re joking, right?”
+	- “Joking?”
+		Dolion (Annoyed): “Why are you asking me about that?”
+		- “I just want to know…”
+			Dolion: “Know what?!”
+			Dolion (Angry): “If I have something to do with YOUR victim’s death?!”
+			label Not What I Meant-2
+			Mallory: “No, I was just asking -”
+			Dolion (Neutral): “Is this why you *hiccup* asked me to go to a pub?”
+			Dolion (Annoyed): “To get m-meee drunk…”
+			Dolion (Upset): “And interrogate me?!”
+			Mallory: “No, I…”
+			Mallory: “I just wanted to hang out…”
+			Dolion (Annoyed): “Hang o-out my ass!”
+			Dolion: “I-I’m leaving!”
+			Dolion (Annoyed): “CHECK PLEASE!”
+			Mallory: “Dol-*hiccup* Dolion, come on…”
+			Dolion (Angry): “DON’T TOUCH ME!”
+			Mallory: “Dolion….”
+			[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+			[wait time="1.0"]
+			jump Argument-2
+		
+		
+		- “Can you just answer the question?”
+			Dolion (Annoyed): “Watch your *hiccup* damn tone.”
+			Mallory: “Dolion, I just meant-”
+			Dolion: “I knoooow what you meant!”
+			Dolion (Angry): “You’re IMPLYING that I *hiccup* have something to do with YOUR victim’s death!”
+			jump Not What I Meant-2
+
+label Dolions Turn
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+[wait time="1.0"]
+[background arg="res://Game/Art/Backgrounds/shop 1.png" fade="0.0"]
+set {Days.6.GoodEnd?} = true
+Mallory: “Check please!”
+Dolion (Upset): “...”
+Dolion: “Mal…”
+- “Yeah?”
+Dolion (Sad): “I hope you know I never thought this would happen to you.”
+Dolion: “I *hiccup* always thought you would be the one to progress further in life.”
+Dolion (Happy): “More than Dad, Mom, and me…”
+Dolion (Sad): “I was*hiccup* hoping to see you on that graduation stage, get your dream job, and marry for love…”
+Dolion (Happy-Teeth): “Or marry some rich guy, haha!”
+Dolion (Upset): “I just wanted you to have a nice life without any *hiccup* hardships…”
+- “Dolion…”
+Dolion (Sad): “I never wanted this to happen to you.”
+Dolion (Happy): “Even though I find you annoying at times, I love you a lot…”
+Dolion (Upset): “I know I’m a shitty twin, and it’s hard to deal with me, but I want you to know I really do love you.”
+- “I love you too…”
+	Dolion (Neutral): “...”
+	Dolion (Upset): “I’m really sorry that this is happening to you…”
+	Mallory: “It’s okay; it’s not like it’s your fault…”
+	Dolion: “Yeah…”
+	Dolion (Happy): “I don’t pray often, but I’ll pray that you're found innocent…”
+	Mallory: “Thank you…”
+	Dolion (Neutral): “Order us an Uber while I pay for the check.”
+	jump end
+- “You are a shitty twin…”
+	Dolion (Happy-Teeth): “Hahahhaaha, yeah, I am!”
+	Dolion (Happy): “I’m sorry about *hiccup* that…”
+	- “It’s okay…”
+		Mallory: “I’m not the easiest to deal with either…”
+		Dolion (Neutral): “...”
+		Dolion (Happy-Teeth): “Order us an Uber while I pay for the check!”
+		jump end
+
+
+label Argument-2
+[background arg="res://Game/Art/Backgrounds/night_street.png" fade="0.0"]
+Mallory: “D-Dolion, you can’t just leave like *hiccup* that…”
+Dolion (Angry): “I’m N-*hiccup* NOT going to just SIT THERE while you pin YOUR murder case on ME!”
+Dolion (Annoyed): “I’m not some PUSSY like YOU, okay?”
+Dolion (Annoyed): “I’m *hiccup* going home…”
+jump InsultMe?
+
+
+label Argument
+[background arg="res://Game/Art/Backgrounds/night_street.png" fade="0.0"]
+Mallory: “D-Dolion, you can’t just leave like *hiccup* that…”
+Dolion (Angry): “I’m N-*hiccup* NOT going to just SIT THERE while you accuse ME of theft!”
+Dolion (Annoyed): “I’m not some PUSSY like YOU, okay?”
+Dolion: “I’m *hiccup* going home…”
+jump InsultMe?
+
+
+label InsultMe?
+set {Days.6.GoodEnd?} = false
+Mallory: “Do you really ha– *hiccup* have to insult me all the time?”
+- “Would it kill you to be nice?...”
+Dolion (Annoyed): “Yes, it would!”
+Dolion (Neutral): “I’m not going to pretend to be someone I’m not!”
+Dolion (Annoyed): “Not like you, you always act like some little princess that needs help!”
+Dolion (Neutral): “I have such an idiot for a twin.”
+Mallory: “...”
+- Blow up
+	if {Evidence.Fam-Doc} == true:
+		jump Confront-1
+	if {Evidence.Fam-Doc} == false:
+		jump Confront-2
+- Hold it in
+	Mallory: “You know what?”
+	Mallory: “Forget it.”
+	Mallory: “I’m- *hiccup* I’m going to order my own Uber.”
+	Mallory: “Thanks for being the worst twin ever.”
+	Dolion (Annoyed): “Right back at you.”
+	Dolion (Neutral): *Hiccup*
+	Mallory: “...”
+	jump end
+
+
+label Confront-1
+- “Idiot? I’m the idiot?!”
+Dolion (Neutral): “Noooo, you’re the genius.”
+Mallory: “You and Dad think I’m stupid.”
+Mallory: “You think I don’t know?”
+Dolion (Happy): “Keeeeeeep talking to yourself, I’m ordering myself an Uber.”
+Mallory: “Sure, go ahead and order your Uber.”
+Mallory: “I *hiccup* I wonder if they know they’re going to drive a criminal in their car.”
+Mallory: “Uber should have that feature added!”
+Mallory: “That way their drivers won’t be attacked by lunatics!”
+Dolion (Annoyed): “Shut up.”
+Mallory (laughing): “Why would I?”
+Mallory: “I thought you felt proud going to to *hiccup* juvie?”
+Dolion (Neutral): “Do you want me to beat some sense into you?”
+Mallory: “...”
+Mallory: “Of course!”
+Mallory: “You can only resolve this with violence, right?”
+Mallory: “What was I expecting from a drug dealer?”
+Dolion (Annoyed): “What?...”
+Dolion: “Mallory, what are you talking about?”
+- “I saw the pictures.”
+Dolion: “What pictures?”
+Mallory: “The pictures of you, Dad, Mom, and other family members…”
+Mallory: “You guys were getting your pictures taken with CRIMINALS!”
+Mallory: “Drug lords, for Christ's sake!”
+Mallory: “No wonder you guys didn’t want me working with the cops!”
+Mallory: “I’m such an idiot for not realizing before….”
+Dolion (Upset): “It’s not drugs! We just… we do work. We’re employees, okay?”
+- “What?”
+Mallory: “Employees?”
+Dolion (Annoyed): “God, you know what?”
+Dolion (Angry): “You act so fucking morally superior all the time, it drives me insane!”
+Dolion (Annoyed): “How do you think we went to college?”
+Dolion: “Do you think money magically falls from the sky?”
+Dolion: “For us - for a family of immigrants who came here without knowing a word of English?” Dolion\: “Why wouldn’t you though?”
+Dolion (Neutral): “You’re so coddled, Mallory.”
+Dolion: “The sacrifices Mom and Dad and me made –”
+Mallory: “Sacrifices?!”
+Dolion (Annoyed): “Yeah! Sacrifices!”
+Dolion (Angry): “You have no idea!”
+- “You self-righteous bitch!”
+Dolion (Annoyed): “You think you aren’t self-righteous either?!”
+Dolion: “Get your head out of your ass, Mallory.”
+Mallory: “Ever since we were kids, you were like this.”
+Dolion (Angry): “Like what?!”
+- “Spitting in my dessert.”
+	- “Trying to trip me down the stairs.”
+		- “Thinking it’s funny to kick dogs.”
+Mallory: “You never had friends, Dolion - just acquaintances who fucking fawned over you, hoping they wouldn’t be the next to get punched.”
+Mallory: “You put all your ex-boyfriends in therapy for God Sake!”
+Dolion: “And you’re weak!”
+Dolion (Annoyed): “You’re a coward!”
+Dolion (Angry): “You never had friends because you can’t do shit for yourself!”
+Dolion (Annoyed): “You only got into college because they wanted more brown people to tick off a box!”
+Mallory: “Whatever, Dolion. You know what’s funny?”
+Dolion (Neutral): “Don’t fucking laugh.”
+Dolion (Annoyed): “If you laugh, I swear to God, we’re gonna have a problem.”
+Mallory: “My first memory? We were five years old, and you pushed me out of the neighbor’s treehouse.”
+Mallory: “I remember you looking down on me from above, smiling.”
+Mallory: “I remember the wind knocked out of me, and I was just gasping and gasping and gasping like you’d stolen all the air in the world just to see me suffer.”
+- “I think that from the moment I was born, I was scared of you.”
+Mallory: “I can’t believe I ever thought that if I could put up with your attitude, everything would be fine…”
+Dolion (Neutral): “…”
+Mallory: “You think that because you can hurt people, that makes you better than them.”
+Dolion (Annoyed): “Shut up.”
+- “No, you need to listen!”
+Mallory: “You think that because you can… “
+Mallory: “inflict…”
+Mallory: “It makes you right.”
+Mallory: “Like violence is correct.”
+Mallory: “Like power is punishment - like they were the wrong ones for getting hurt.”
+Mallory: “And I know why now.”
+Mallory: “I used to think that it was because you were just a sociopath or something.”
+Mallory: “But you’re not.”
+Mallory: “You’re scared of the pain that you give to others.”
+Mallory: “You’re a dumb animal, and you fear pain, and you’re insecure and you hurt…
+Dolion (Angry): “JUST SHUT UP ALREADY!”
+Mallory: “...”
+- “I hate you.”
+[wait time="4.0"]
+Dolion (Upset): “Our family would be better off… if you’d just died in that coma.”
+Dolion: “...”
+Dolion (Annoyed): “My Uber is right around the corner.”
+Dolion (Neutral): “Whether you go home, or not, I don’t care.”
+Dolion (Annoyed): “Whether you’re found guilty tomorrow…”
+Dolion: “I hope you know that I don't care.”
+Dolion (Upset): “Bye, Mallory.”
+- “...”
+jump end
+
+
+label Confront-2
+- “Idiot? I’m the idiot?!”
+Dolion (Annoyed): “Noooo, you’re the genius.”
+Mallory: “You and Dad think I’m stupid.”
+Mallory: “You think I don’t know?”
+Dolion (Neutral): “Keeeeeeep talking to yourself, I’m ordering myself an Uber.”
+Mallory: “Sure, go ahead and order your Uber.”
+Mallory: “I *hiccup* I wonder if they know they’re going to drive a criminal in their car.”
+Mallory: “Uber should have that feature added!”
+Mallory: “That way their drivers won’t be attacked by lunatics!”
+Dolion (Annoyed): “Shut up.”
+Mallory (laughing): “Why would I?”
+Mallory: “I thought you felt proud going to to *hiccup* juvie?”
+Dolion (Angry): “Do you want me to beat some sense into you?”
+Mallory: “...”
+Mallory: “Of course you can only resolve this with violence, right?”
+Mallory: “What was I expecting from a criminal?!”
+Dolion (Annoyed): “Get your head out of your ass, Mallory!”
+Mallory: “Ever since we were kids, you were like this.”
+Dolion (Neutral): “Like what?!”
+- “Spitting in my dessert.”
+	- “Trying to trip me down the stairs.”
+		- “Thinking it’s funny to kick dogs.”
+Mallory: “You never had friends, Dolion - just acquaintances who fucking fawned over you, hoping they wouldn’t be the next to get punched.”
+Mallory: “You put all your ex-boyfriends in therapy for God Sake!”
+Dolion (Angry): “And you’re weak!”
+Dolion (Annoyed): “You’re a coward!”
+Dolion: “You never had friends because you can’t do shit for yourself!”
+Dolion: “You only got into college because they wanted more brown people to tick off a box!”
+Mallory: “Whatever, Dolion. You know what’s funny?”
+Dolion (Angry): “Don’t fucking laugh.”
+Dolion (Annoyed): “If you laugh, I swear to God, we’re gonna have a problem.”
+Mallory: “My first memory? We were five years old, and you pushed me out of the neighbor’s treehouse.”
+Mallory: “I remember you looking down on me from above, smiling.”
+Mallory: “I remember the wind knocked out of me, and I was just gasping and gasping and gasping like you’d stolen all the air in the world just to see me suffer.”
+- “I think that from the moment I was born, I was scared of you.”
+Mallory: “I can’t believe I ever thought that if I could put up with your attitude, everything would be fine…”
+Dolion (Neutral): “…”
+Mallory: “You think that because you can hurt people, that makes you better than them.”
+Dolion (Annoyed): “Shut up.”
+- “No, you need to listen!”
+Mallory: “You think that because you can… “
+Mallory: “inflict…”
+Mallory: “It makes you right.”
+Mallory: “Like violence is correct.”
+Mallory: “Like power is punishment - like they were the wrong ones for getting hurt.”
+Mallory: “And I know why now.”
+Mallory: “I used to think that it was because you were just a sociopath or something.”
+Mallory: “But you’re not.”
+Mallory: “You’re scared of the pain that you give to others.”
+Mallory: “You’re a dumb animal, and you fear pain, and you’re insecure and you hurt…
+Dolion (Angry): “JUST SHUT UP ALREADY!”
+Mallory: “...”
+- “I hate you.”
+update Dolion (Annoyed)
+[wait time="4.0"]
+Dolion (Upset): “Our family would be better off… if you’d just died in that coma.”
+Dolion: “...”
+Dolion (Annoyed): “My Uber is right around the corner.”
+Dolion (Neutral): “Whether you go home, or not, I don’t care.”
+Dolion: “Whether you’re found guilty tomorrow…”
+Dolion (Annoyed): “I hope you know that I don't care.”
+Dolion: “Bye, Mallory.”
+- “...”
+label end
+leave --All--
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+[wait time="2.0"]
+[save slot="1"]
+jump Day-7/

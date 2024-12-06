@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6qhc17s8j7fv"]
+
+[ext_resource type="PackedScene" uid="uid://b1axxudpvaikp" path="res://Game/Days/Scenes/days.tscn" id="1_hjoys"]
+[ext_resource type="PackedScene" uid="uid://6f3aguxq6814" path="res://Game/Days/Scenes/title_screen.tscn" id="2_kyj02"]
+[ext_resource type="PackedScene" uid="uid://d2g51olbsyb5f" path="res://Game/Days/Scenes/disclaimer.tscn" id="3_rxswf"]
+[ext_resource type="PackedScene" uid="uid://crbwbjcpqk6ta" path="res://opening_screen.tscn" id="4_an8vy"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Days" parent="." instance=ExtResource("1_hjoys")]
+
+[node name="TitleScreen" parent="." instance=ExtResource("2_kyj02")]
+
+[node name="Disclaimer" parent="." instance=ExtResource("3_rxswf")]
+
+[node name="OpeningScreen" parent="." instance=ExtResource("4_an8vy")]

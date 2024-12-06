@@ -1,0 +1,203 @@
+leave --All--
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+[background arg="res://Game/Art/Backgrounds/police_station_lobby.png" fade="1.0"]
+[style name="Style"]
+join PoliceOfficer (Neutral) right
+PoliceOfficer (Neutral): “Good morning, Ms. Castillo.”
+Mallory: “Good morning.”
+PoliceOfficer: “If you want, you can look at the evidence in the property room and go to the morgue to look at the victim.”
+PoliceOfficer (Sus): “It could help you regain your…”
+PoliceOfficer: “lost memories.”
+Mallory: "Okay, thank you..."
+leave PoliceOfficer
+label Station
+- Go to Property Room | [if {Days.5.Property} == false]
+	[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+	[wait time="1.0"]
+	[background arg="res://Game/Art/Backgrounds/evidence_room.png" fade="0.0"]
+	set {Days.5.Property} = true
+	label PropertyRoom
+	- Bloody Knife | [if {Days.5.Knife} == false]
+		set {Days.5.Knife} = true
+		[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+		Mallory: “Ugh…”
+		Mallory: “Did I really hold this?”
+		Mallory: “I don’t recognize this knife at all…”
+		Mallory: “...”
+		Mallory: “My headache…”
+		jump PropertyRoom
+	
+	- Hair Sample | [if {Days.5.Hair} == false]
+		set {Days.5.Hair} = true
+		[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+		Mallory: “They found a piece of my hair there…”
+		Mallory: “It seems like a piece was cut off?”
+		Mallory: “Did I cut it off, or did the victim try to defend himself and miss?”
+		Mallory: “And ended up cutting a piece instead?”
+		Mallory: “…”
+		jump PropertyRoom
+	- Lighter | [if {Days.5.Lighter} == false] [Evidence.Lighter="true"]
+		set {Days.5.Lighter} = true
+		[background arg="res://Game/Art/Evidences/Doli-Lighter.png" fade="0.0"]
+		Mallory: “It’s Dolion’s lighter that I found at the crime scene.”
+		Mallory: “Did I have it on me when I got there?”
+		Mallory: “Or was she there?...”
+		Mallory: “But that wouldn’t make sense, because the victim and I were the only ones found at his house.”
+		Mallory: “I guess I was holding onto it.”
+		jump PropertyRoom
+	- Bloody Clothes | [if {Days.5.BC} == true] [Evidence.BC="false"]
+		set {Days.5.BC} = true
+		[background arg="res://Game/Art/Evidences/BloodyClothes.png" fade="0.0"]
+		Mallory: “It’s the clothes I found at the plaza.”
+		Mallory: “...”
+		Mallory: “They’re still trying to figure out who these clothes belong to, and who the blood belongs to.”
+		Mallory: “...”
+		jump PropertyRoom
+	- CCTV-2 | [if {Days.5.CCTV-2} == true] [Evidence.CCTV-2="false"]
+		set {Days.5.CCTV} = true
+		Mallory: “CCTV-2…”
+		Mallory: “Synopsis…”
+		Mallory: “It's a recording of Dolion and Dad near the plaza an hour later of the murder.”
+		Mallory: “If they were walking, it would've taken them around 20 minutes to get there.”
+		Mallory: “Maybe they were just near the area, because what were they doing within that 40 minute window?”
+		Mallory: “...”
+		jump PropertyRoom
+	- "I've seen everything I needed to." | [if {Days.5.Knife} == true] [Days.5.Lighter="true" Days.5.Hair="true" Days.5.Rec1="true" Days.5.BC="true" Days.5.CCTV-2="true"]
+		jump Station
+
+- Go to Morgue | [if {Days.5.Morgue} == false]
+	[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+	[wait time="1.0"]
+	[background arg="res://Game/Art/Backgrounds/morgue.png" fade="0.0"]
+	set {Days.5.Morgue} = true
+	label Morgue
+	Mallory: “It smells like a hospital here.”
+	Mallory: “...”
+	Mallory: “I…”
+	Mallory: “I don’t recognize him at all…”
+	Mallory: "His name was Elias Norwood..."
+	Mallory: “His estimated death was at 8\: 45 PM…”
+	Mallory: "He has such a large slit on his neck...."
+	Mallory: "...."
+	Mallory: "According to the documents, his clothes were soaked with his blood."
+	Mallory: "There were streaks of his blood all over his clothes..."
+	Mallory: "Does that mean he was spraying blood, instead of it oozing out?"
+	Mallory: "..."
+	Mallory: “Why would I kill him?”
+	Mallory: “Could I do that to someone?”
+	jump Station
+
+
+- Go To Interrogation | [if {Days.5.Property} == true] [Days.5.Morgue="true"]
+	label Interrogation
+	[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+	[wait time="1.0"]
+	[background arg="res://Game/Art/Backgrounds/police_station.png" fade="0.0"]
+	join PoliceOfficer right
+	PoliceOfficer (Neutral): “Hello, Mallory. It’s good to see you again.”
+	Mallory: “Hi.”
+	PoliceOfficer: “I know this situation may seem scary, but no one is trying to get you in trouble.”
+	PoliceOfficer (Sus): “It’s not an interrogation. No one wants that.”
+	PoliceOfficer: “We’re just going to have a chat, all right?”
+	Mallory: “Okay.”
+	PoliceOfficer (Neutral): “Do you remember anything about that day?”
+	- "Yes, I remember something"
+		label memory 1
+		Mallory: "..."
+		Mallory: “I remember screaming. The sensation of falling. Someone that I knew was there. Lots of people that I knew…”
+		Mallory: “It hurt.”
+		PoliceOfficer (Sus): “The falling?”
+		Mallory: “That, too.”
+		jump memory jog
+	- "No"
+		Mallory: “It’s all blank and fuzzy. I’m sorry. My head really hurts when I try to remember things.”
+		PoliceOfficer (Sus): “Well, try to remember for me, please.”
+		PoliceOfficer (Mad): “Anything you can piece together is important.”
+		PoliceOfficer (Neutral): “It could get you out of a lot of trouble.
+		Mallory: “I’m sorry. I really can’t remember anything.”
+		jump memory jog
+	
+	label memory jog
+	PoliceOfficer (Sus): “These memory issues must be frustrating.”
+	Mallory: “You have no idea…”
+	PoliceOfficer (Neutral): “Let’s chat about what we know about you already, Mallory Castillo.”
+	PoliceOfficer: “Maybe it’ll stir something up.”
+	Mallory: …
+	PoliceOfficer: “You were born on July 7, 1997.
+	PoliceOfficer (Sus): “Your mother, father and sister all have criminal records…”
+	PoliceOfficer (Neutral): “But you don’t have anything in our system.”
+	- "My sister?"
+		PoliceOfficer: “When she was younger, your sister went to juvie for aggravated assault.”
+		Mallory: “I remember now.”
+		Mallory: “She said that the other girl had it coming.”
+		PoliceOfficer (Sus): “Do you really believe that?”
+		Mallory: …
+		jump jog 2
+	- "My father?"
+		PoliceOfficer: “Your father was connected to a gang five years ago.”
+		PoliceOfficer (Sus): “He never went to jail, but he was implicated.”
+		Mallory: “I don’t remember this.”
+		PoliceOfficer (Neutral): “What else is new?”
+		Mallory: …
+		jump jog 2
+	label jog 2
+	PoliceOfficer (Neutral): “Anyways, your record is clean.”
+	PoliceOfficer: “We have no precedence to think that you committed this crime.”
+	PoliceOfficer (Sus): “In fact, it’s looking very possible that you’re a victim, too.”
+	PoliceOfficer: “Perpetrators of murder usually don’t mysteriously appear unconscious and brain-damaged right after the crime was committed.”
+	PoliceOfficer (Neutral): “So help us out, Mallory.”
+	- "I hope I can help you."
+		PoliceOfficer: “Good. We’re going to get to the bottom of what really happened that night.”
+		PoliceOfficer: “Your testimony will be invaluable.”
+		PoliceOfficer (Sus): “Do anything you can to jog your memory.”
+		PoliceOfficer: “I guarantee that we’re on your side. Help us, so we can help you.”
+		PoliceOfficer: "..."
+		PoliceOfficer (Neutral): “Well, thank you for your time.”
+		PoliceOfficer: “Remember that your trial is taking place in 3 days.”
+		PoliceOfficer: “You can leave now.”
+		Mallory: “Okay…”
+		leave --All--
+		[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+		[wait time="2.0"]
+		[save slot="1"]
+		jump Day-5/
+	- "I don't think I can help you."
+		PoliceOfficer (Neutral): …
+		PoliceOfficer (Mad): “I don’t see what choice you have.”
+		PoliceOfficer (Sus): “If you really are innocent…”
+		Mallory: “I am innocent! I think…”
+		PoliceOfficer (Sus): “If you really are innocent, you’d work with us. Only guilty people are afraid of cops.”
+		PoliceOfficer: “You’re making a bad look for yourself, Mallory.”
+		PoliceOfficer (Neutral): “The amnesia angle is hardly helping you, either.”
+		Mallory: “Amnesia?”
+		PoliceOfficer (Mad): “It’s a little convenient, don’t you think?”
+		PoliceOfficer: “You’re accused of a crime, and suddenly you don’t remember anything about that night?”
+		PoliceOfficer (Neutral): “It’s like a child’s attempt to get out of trouble.”
+		Mallory: “You think I’m faking?!”
+		PoliceOfficer (Neutral): “I’m not saying that.”
+		PoliceOfficer (Sus): “But imagine what a jury would think.”
+		PoliceOfficer (Neutral): “Any half-decent lawyer is going to tear through your best attempt at a defense.”
+		- "I’m done here."
+			PoliceOfficer (Sus): “Fine. But remember that you had a chance to make things right.”
+			PoliceOfficer: “Whatever happens next is on you.”
+			Mallory: “...”
+			PoliceOfficer (Neutral): “You can leave now.”
+			Mallory: “Okay…”
+			leave --All--
+			[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+			[wait time="2.0"]
+			[save slot="1"]
+			jump Day-5/
+		- "I don’t want that. I want to help you."
+			PoliceOfficer (Sus): “Then if you have anything that could help me help you, tell me.”
+			PoliceOfficer: “Or at least tell Private Investigator Manuel, please.”
+			PoliceOfficer (Neutral): “...”
+			PoliceOfficer: “Well, thank you for your time.”
+			PoliceOfficer: “Remember that your trial is taking place in 3 days.”
+			PoliceOfficer: “You can leave now.”
+			Mallory: “Okay…”
+			leave --All--
+			[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+			[wait time="2.0"]
+			[save slot="1"]
+			jump Day-5/

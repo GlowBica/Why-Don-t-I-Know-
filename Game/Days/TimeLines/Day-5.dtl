@@ -1,0 +1,217 @@
+[background arg="res://Game/Art/Backgrounds/bedroom.png" fade="1.0"]
+[style name="Style"]
+join Mallory left
+Mallory (Thinking): “Strangely, I haven’t given myself the time to explore my own home…”
+Mallory (Happy): “Maybe looking around will help me regain some memories.”
+Mallory (Neutral): “Where should I look first?”
+label Explore
+- I'm tired... | [if {Days.4.AllRoom?} == 3]
+	jump Tired End
+
+- Living Room | [if {Days.4.Kitchen} == false]
+	[background arg="res://Game/Art/Backgrounds/family_room.png" fade="0.0"]
+	set {Days.4.Kitchen} = true
+	set {Days.4.AllRoom?} += 1
+	label Kitchen
+	Mallory (Happy): “I… remember being in high school, and Mom making breakfast for Dolion and me.”
+	Mallory (Neutral): “Dolion’s temper back in freshman year wasn’t that bad…”
+	Mallory (Concerned): “It started getting worse in Junior year after we turned 17.”
+	Mallory (Thinking): “I was never able to figure out what triggered that change.”
+	Mallory (Neutral): “Although Mom always said it was just her hormones and puberty finally kicking in.”
+	Mallory: “...”
+	Mallory (Thinking): “I can’t believe I forgot how close we used to be.”
+	Mallory (Neutral): “We weren’t able to spend as much time together once we got into college, but she always had my back.”
+	Mallory (Concerned): “I can’t imagine how hurt she must’ve been when she knew I lost all of my memories.”
+	Mallory: “How would I react if the people I loved most lost all recollection of me?”
+	Mallory (Neutral): “...”
+	Mallory (Thinking): Where should I head next?”
+	jump Explore
+
+- Dolion’s Room | [if {Days.4.Doli} == false]
+	[background arg="res://Game/Art/Backgrounds/dolion room.png" fade="0.0"]
+	set {Days.4.Doli} = true
+	set {Days.4.AllRoom?} += 1
+	label Dolion’s Room
+	Mallory (Neutral): “I haven’t stepped a foot in here since I woke up.”
+	Mallory (Thinking): “It’s… really different from my room.”
+	Mallory (Neutral): “I guess Dolion and I are really different, though.”
+	label Pictures
+	[background arg="res://Game/Art/Backgrounds/dolion room.png" fade="0.5"]
+	- Picture of Friends | [if {Days.4.Friends} == false]
+		[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+		set {Days.4.Friends} = true
+		leave Mallory
+		Mallory (Thinking): “I don’t recognize some of the people in that picture.”
+		Mallory: “But I do recognize cousins Luis and Luisa and one of Dolion’s college friends.”
+		Mallory (Happy): “Luis and Luisa are twins too…”
+		Mallory (Thinking): “When was the last time I saw Luis and Luisa?”
+		Mallory: “Maybe it was on their birthday five years ago?”
+		Mallory: “...”
+		Mallory (Neutral): “Maybe I should go this year with Dolion…”
+		jump Pictures
+	
+	- Family Picture | [if {Days.4.Family} == false] [Days.4.Doli="true" Days.4.Kitchen="true"]
+		[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+		set {Days.4.Family} = true
+		leave Mallory
+		Mallory: “It’s a picture of our family.”
+		Mallory: “It was before Mom’s arrest, and when we were the happiest.”
+		Mallory: “It was also before Dolion’s temper started taking a turn for the worse…”
+		Mallory: “I remember us going to Mexico and visiting family members.”
+		Mallory: “This picture was taken at the resort we were staying at, and I remember Dolion telling me she had a crush on one of the guests staying there.”
+		Mallory: “Hahahaha…”
+		Mallory: “I also remember having a crush on a guy, but I think he might’ve been interested in Dolion.”
+		Mallory: “I miss those days…”
+		jump Pictures
+	
+	- "Where to next?" | [if {Days.4.Friends} == true] [Days.4.Family="true"]
+		jump Explore
+
+- Dad's Room | [if {Days.4.Kitchen} == true] [Days.4.Doli="true" Days.4.Dad="false"]
+	[background arg="res://Game/Art/Backgrounds/dad_bedroom.png" fade="0.0"]
+	set {Days.4.Dad} = true
+	set {Days.4.AllRoom?} += 1
+	label Dad’s Room
+	join Mallory left
+	Mallory (Neutral): “This room…”
+	Mallory: “I remember coming here as a child when Dolion and I would get nightmares.”
+	Mallory (Happy): “Mom and Dad would always get annoyed, but they would always let us stay the night.”
+	Mallory (Thinking): “I think Dad has left the room the same ever since Mom got arrested…”
+	Mallory (Concerned): “I remember him being devastated by her arrest.”
+	Mallory (Sad): “There were nights that he would drink more than usual, but only after he thought Dolion and I were asleep.”
+	Mallory: “Dolion and I would end up sleeping on the couch next to him...”
+	Mallory (Neutral): “...”
+	Mallory (Concerned): “He really tried his hardest to fill Mom’s spot.”
+	Mallory: “I don’t know what my life would be like without him as my father…”
+	Mallory (Neutral): “...”
+	Mallory (Thinking): “I wonder if he left her clothes in the same spot…”
+	- Leave Room
+		Mallory (Neutral): “I probably shouldn’t. What if he walks in and sees me looking through his clothes?”
+		jump Explore
+	- Open closet
+		[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+		leave Mallory
+		Mallory: “He…”
+		Mallory: “He actually hasn’t moved her clothes at all…”
+		Mallory: “...”
+		Mallory: “I can’t believe I forgot how much he loves Mom…”
+		Mallory: “Oh, right.”
+		Mallory: “I remember placing my diary as a kid in the corner of his closet!”
+		Mallory: “I wonder if he found the diary or if it’s still there…”
+		[wait time="1.5"]
+		[background arg="res://Game/Art/Backgrounds/dad_bedroom.png" fade="0.0"]
+		join Mallory right
+		Mallory (Neutral): “It’s not here…”
+		Mallory (SuperHappy): “I guess he ended up finding it hahaha!”
+		Mallory (Neutral): “...”
+		Mallory (Thinking): “Is… is that a safety vault?”
+		Mallory: “...”
+		Mallory (Neutral): “How could I forget?”
+		Mallory: “I remember Dad getting angry whenever he would find me here…”
+		Mallory: “he would tell me not to touch it because it was important to him.”
+		Mallory (Neutral): "If I remember correctly, this only takes in 4 digits..."
+		Mallory (Thinking): “Should I try to open it?”
+		- Leave it
+			Mallory (Neutral): “I probably shouldn’t."
+			Mallory (Concerned): "What if he walks in and sees me?..."
+			Mallory (Neutral): "I'd rather not risk it."
+			jump Explore
+		- Try to open it
+			leave Mallory
+			[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+			label OpenIt
+			[text_input var="Days.4.Secret Vault.Code"]
+			if {Days.4.Secret Vault.Code} != "1997":
+				set {Days.4.Secret Vault.Count} += 1
+				if {Days.4.Secret Vault.Count} == 3:
+					jump Input wrong code 5 times
+				Mallory: "That's not right..."
+				Mallory: "Knowing Dad, this probably has a limit of 3 tries..."
+				Mallory: "I should be careful so I don't get found out..."
+				Mallory: "Should I stop now, or try again?"
+				- Try again
+					jump OpenIt
+				- Leave room
+					Mallory: “I should stop...”
+					Mallory: "I don't want to get into anymore trouble..."
+					jump Explore
+			if {Days.4.Secret Vault.Code} == "1997":
+				jump Input Mallory and Dolion’s Birthday
+
+label Input Mallory and Dolion’s Birthday
+[background arg="res://Game/Art/Backgrounds/dad_bedroom.png" fade="0.0"]
+join Mallory left
+set {Evidence.Fam} = -Doc} = true
+Mallory: “It’s our birthday.”
+Mallory: “I guess he’s always had a soft spot for his family…”
+Mallory: “I wonder what’s inside?”
+leave Mallory
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+[background arg="res://Game/Art/Evidences/Document.png" fade="0.0"]
+Mallory: “These pictures…”
+Mallory: “I recognize these men. I know them from the news.”
+Mallory: “Aren’t these some of the notorious drug lords from Mexico?”
+[background arg="res://Game/Art/Backgrounds/dad_bedroom.png" fade="0.0"]
+join Mallory (Thinking) left
+Mallory (Thinking): “Mom, Dad, Cousin Diego, and some of my other family members from Mexico City are in these pictures, with different drug lords…”
+Mallory (Concerned): “Is this the gang Mom was involved with?”
+Mallory (Thinking): “...”
+Mallory (Concerned): “Is that…”
+Mallory: “Dolion in these pictures?”
+Mallory (Concerned): “...”
+Mallory: “These documents…”
+Mallory (Thinking): “Did my dad manage these many businesses?”
+Mallory: “And these names…”
+Mallory (Concerned): “Aren’t these the names of politicians who were assassinated because they wanted to go against some powerful gangs?”
+Mallory: “...”
+Mallory (Concerned): “What should I do?”
+- Take pictures
+	Mallory (Concerned): “I should take some pictures; maybe this has something to do with my case.”
+	Mallory (Sad): “But would betraying Dad really be the correct answer?”
+	Mallory: “After all he’s done for me…”
+	Mallory (Concerned): “...”
+	[style name="NoName"]
+	*Click Click Click*
+	[style name="Style"]
+	Mallory: “...”
+	Mallory (Concerned): “I should put it back and leave before they get back home…”
+	jump end
+- Put the vault back
+	Mallory (Thinking): “Betraying Dad isn’t the answer.”
+	Mallory: “These pictures are also old, so he probably isn’t involved anymore…”
+	Mallory (Concerned): “But what if-”
+	Mallory: “What if this has something to do with my case?”
+	Mallory (Thinking): “But Dad would never do something like frame me.”
+	Mallory: “Right?”
+	Mallory (Concerned): “I should leave before they get back home…”
+	jump end
+
+label Input wrong code 5 times
+[background arg="res://Game/Art/Backgrounds/dad_bedroom.png" fade="0.0"]
+join Mallory left
+Mallory (Neutral): “Man, I guess I don’t know my Dad enough to guess his password…”
+join Dad right
+leave Mallory
+Dad (Angry): “MALLORY!”
+Dad: “What are you doing?!”
+Mallory: “I-I was just-”
+Dad (Annoyed): “I come home early to try to spend time with you, and instead I find you snooping around in my room?!”
+Mallory: “No, I was- I was trying-”
+Dad (Angry): “GET OUT!”
+Mallory: “Dad I’m sorry, I-”
+Dad: “NOW!”
+Mallory: “...”
+leave --All--
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+jump Day-6/
+
+label Tired End
+[background arg="res://Game/Art/Backgrounds/family_room.png" fade="0.0"]
+Mallory: "I'm tired after going down memory lane..."
+Mallory: "I think I'll take a quick nap..."
+label end
+leave --All--
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+[wait time="2.0"]
+[save slot="1"]
+jump Day-6/

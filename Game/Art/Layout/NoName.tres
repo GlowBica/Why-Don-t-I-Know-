@@ -1,0 +1,90 @@
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=20 format=3 uid="uid://cd6wbgtmywplb"]
+
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="1_up3ox"]
+[ext_resource type="PackedScene" uid="uid://c1k5m0w3r40xf" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_FullBackground/full_background_layer.tscn" id="2_anybp"]
+[ext_resource type="PackedScene" uid="uid://cy1y14inwkplb" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Portraits/vn_portrait_layer.tscn" id="3_ai8rb"]
+[ext_resource type="PackedScene" uid="uid://cn674foxwedqu" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn" id="4_yjcns"]
+[ext_resource type="PackedScene" uid="uid://cc7vph02ds0ae" path="res://Game/Art/Layout/CustomNoName/VisualNovelTextbox/custom_visual_novel_textbox.tscn" id="5_fap2p"]
+[ext_resource type="PackedScene" uid="uid://dsbwnp5hegnu3" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Glossary/glossary_popup_layer.tscn" id="6_u7wwr"]
+[ext_resource type="PackedScene" uid="uid://dhk6j6eb6e3q" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Choices/vn_choice_layer.tscn" id="7_32hhf"]
+[ext_resource type="PackedScene" uid="uid://cvgf4c6gg0tsy" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_TextInput/text_input_layer.tscn" id="8_3hs8h"]
+[ext_resource type="PackedScene" uid="uid://lx24i8fl6uo" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_History/history_layer.tscn" id="9_illgi"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style.gd" id="10_ee036"]
+
+[sub_resource type="Resource" id="Resource_nk0oq"]
+script = ExtResource("1_up3ox")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_fqpfq"]
+script = ExtResource("1_up3ox")
+scene = ExtResource("2_anybp")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_xi7vx"]
+script = ExtResource("1_up3ox")
+scene = ExtResource("3_ai8rb")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_rplpf"]
+script = ExtResource("1_up3ox")
+scene = ExtResource("4_yjcns")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_g1xib"]
+script = ExtResource("1_up3ox")
+scene = ExtResource("5_fap2p")
+overrides = {
+"bold_font": "\"res://Game/Art/Layout/Fonts/courbd.ttf\"",
+"bold_italics_font": "\"res://Game/Art/Layout/Fonts/courbi.ttf\"",
+"box_color_custom": "Color(1, 1, 1, 0)",
+"box_color_use_global": "false",
+"box_margin_bottom": "20.0",
+"box_size": "Vector2(800, 200)",
+"italics_font": "\"res://Game/Art/Layout/Fonts/couri.ttf\"",
+"name_label_custom_font_size": "30.0",
+"name_label_font": "\"res://Game/Art/Layout/Fonts/courbd.ttf\"",
+"name_label_use_global_font_size": "false",
+"normal_font": "\"res://Game/Art/Layout/Fonts/cour.ttf\"",
+"text_size": "25.0",
+"text_use_global_color": "false",
+"text_use_global_size": "false"
+}
+
+[sub_resource type="Resource" id="Resource_vi7qj"]
+script = ExtResource("1_up3ox")
+scene = ExtResource("6_u7wwr")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_xpmjf"]
+script = ExtResource("1_up3ox")
+scene = ExtResource("7_32hhf")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_fvh00"]
+script = ExtResource("1_up3ox")
+scene = ExtResource("8_3hs8h")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_pskt1"]
+script = ExtResource("1_up3ox")
+scene = ExtResource("9_illgi")
+overrides = {}
+
+[resource]
+script = ExtResource("10_ee036")
+name = "NoName"
+layer_list = Array[String](["10", "11", "12", "13", "14", "15", "16", "17"])
+layer_info = {
+"": SubResource("Resource_nk0oq"),
+"10": SubResource("Resource_fqpfq"),
+"11": SubResource("Resource_xi7vx"),
+"12": SubResource("Resource_rplpf"),
+"13": SubResource("Resource_g1xib"),
+"14": SubResource("Resource_vi7qj"),
+"15": SubResource("Resource_xpmjf"),
+"16": SubResource("Resource_fvh00"),
+"17": SubResource("Resource_pskt1")
+}
+base_overrides = {}
+layers = Array[ExtResource("1_up3ox")]([])
+metadata/_latest_layer = "13"

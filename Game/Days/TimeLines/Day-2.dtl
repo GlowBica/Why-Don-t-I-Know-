@@ -1,0 +1,200 @@
+[background arg="res://Game/Art/Backgrounds/jail.png" fade="2.0"]
+[wait time="1.0"]
+[style name="Style"]
+join Mallory (Neutral) left
+Mallory: “My mother… I wonder what kind of person she is…”
+Mallory (Thinking): “She was in jail for how many years?”
+- “7 years”
+	set {Days.2.Years.7} = true
+	Mallory: “7 years… right.”
+- “5 years”
+	set {Days.2.Years.Correct} = true
+	Mallory (Neutral): “5 years… right.”
+- “9 years”
+	set {Days.2.Years.9} = true
+	Mallory (Neutral): “9 years… right.”
+leave Mallory
+join Mom (Neutral) right
+Mom (Happy): “Mal, hija. It’s so good to see you. How have you been?”
+Mallory: “O-oh, I’ve um…”
+- “I’ve been well!”
+	update Mallory (Happy)
+	Mom: “That’s very good to hear.”
+	Mom: “How are your dad and Dolion doing?”
+	- “They’re doing fine.”
+		Mom (Neutral): Sigh
+		Mom (Happy): “If my familia is doing good, then so am I.”
+		Mom (Thinking): “Even if I’m in here.”
+		update Mallory (Neutral)
+		if {Days.2.Years.Correct} == true:
+			Mallory (Thinking): “Yeah, five years is a long time to be in jail.”
+			Mom (Neutral): “It has been almost five years, hasn’t it?”
+			Mom: “I know I say this every time you visit, but…
+			Mom (Concern): I’m sorry that I’m not there for you and your sister.”
+			jump to questions
+		if {Days.2.Years.Correct} == false:
+			if {Days.2.Years.7} == true:
+				Mallory (Thinking): “Yeah, seven years is a long time to be in jail.”
+				Mom (Thinking): “Seven years?”
+				Mallory (Thinking): “Yeah, you’ve been in jail for around seven years, right?”
+				jump actually for five
+			if {Days.2.Years.9} == true:
+				Mallory (Neutral): “Yeah, nine years is a long time to be in jail.”
+				Mom (Thinking): “Nine years?”
+				Mallory (Thinking): “Yeah, you’ve been in jail for around nine years, right?”
+				jump actually for five
+				label actually for five
+				Mom (Thinking): “Mallory, I’ve been in jail for five years.”
+				- “Y-Yeah, you're right, I meant five, sorry.”
+					update Mallory (Concerned)
+					Mom (Thinking): “uh-huh…”
+					Mom (Neutral): “By the way, do you remember my name?”
+					Mallory (Neutral): “Of course I do!”
+					Mallory: “It’s-”
+					- “Katherine!”
+						label “Uh-huh”
+						Mom (Neutral): “Uh-huh…”
+						Mom (Thinking): “I’m not sure if you’re messing with me.”
+						Mallory (Thinking): “What?”
+						Mom (Neutral): “I mean, you have to be joking, right?”
+						Mom (Thinking): “Otherwise, why would you get my years of imprisonment and name wrong?”
+						- “You’re overreacting!”
+							update Mallory (Angry)
+							Mom (Angry): “Just because I’m in jail does not mean you can disrespect me like that.”
+							jump to questions
+						- “It was just a joke!”
+							update Mallory (Happy)
+							Mom (Thinking): “Sure it was.”
+							jump to questions
+						- “I, um, actually don’t remember anything…”
+							update Mallory (Concerned)
+							jump “I don’t remember”
+					- “Katrina!”
+						Mom (SuperHappy): “At least you still remember this old woman’s name, haha…”
+						update Mallory (SuperHappy)
+						jump to questions
+					- “Karoline!”
+						jump “Uh-huh”
+				- “I’m sorry, I actually don’t remember…”
+					label “I don’t remember”
+					Mom (Thinking): “What?”
+					Mallory (Thinking): “I actually got into an accident.”
+					jump accident
+	- “They’re being jerks.”
+		Mom (Thinking): “Dolion and Juan?”
+		Mallory (Angry): “Yes!”
+		Mom (Neutral): “What happened?”
+		- “Nothing, forget about it”
+			update Mallory (Concerned)
+			Mom (Angry): “You can’t start a thought and then leave me dry like that!”
+			Mallory (Thinking): “Really, forget it. Never mind.”
+			Mom (Thinking): “Fine. I just want you to know that you can tell me things.”
+			jump to questions
+		- “If I don’t respond the way they want me to, they get upset.”
+			update Mallory (Concerned)
+			Mom (Neutral): “This shouldn’t be any news to you, Mal.”
+			Mom (Thinking): “You know they’ve always been like that. I’m surprised you’re even complaining about it now.”
+			jump to questions
+- “I got into an accident…”
+	label accident
+	update Mallory (Concerned)
+	Mom (Concern): “You what?!”
+	Mallory (Concerned): “I have temporary amnesia, so I actually don’t remember anything at all.”
+	Mallory (Thinking): “Bits and pieces come back sometimes, but for the most part it’s all kinda gone.”
+	Mallory (Sad): “I’m also… being investigated for murder.”
+	Mom (Concern): “...”
+	Mom (Thinking): “Did you do it?”
+	Mallory (Concerned): “I’m not sure.”
+	Mom (Concern): “And the cops are investigating, right?”
+	Mallory (Neutral): “That’s how I found out I was under investigation.”
+	Mom (Thinking): “Are you planning on working with them?”
+	- “I’m not sure.”
+		Mom (Concern): “Well, you shouldn’t.”
+		label hellhole
+		Mom (Angry): “I’m only in this hellhole because of them!”
+		Mom (Angry): “You’re not even sure if you did it or not. They could very easily pin this on you!”
+		Mom (Thinking): “Did losing your memories make you idiotic?!”
+		Mom (Angry): “Hell, you might as well turn yourself in and say you’re guilty while you’re at it!”
+		Mallory (Sad): “I- I’m sorry. Sorry, mom.”
+		Mom: "I can't believe this..."
+		Mallory: "Mom?..."
+		Mom: "What, Mallory?"
+		Mallory: "Is it okay if I ask you some questions?..."
+		Mom (Neutral): "..."
+		Mom (Angry): "Sure, but don't think this crazy idea of yours is going to be forgotten!"
+		jump questions
+	- “Yes”
+		Mom (Angry): “Are you crazy?!”
+		Mom (Angry): “Look at me!”
+		jump hellhole
+	- “No”
+		Mom (Happy): “Good!”
+		Mom (SuperHappy): “I knew you got your smarts from me.”
+		jump to questions
+	
+	label to questions
+	Mallory (Thinking): “Is it fine if I ask you a few questions… mom?”
+	Mom (Happy): “Of course, hija!”
+	label questions
+	- “What exactly did you do to be in jail?”
+		Mom (Neutral): “I, uh…”
+		Mom (Concern): “I was arrested for drug trafficking.”
+		- “Where did you get the drugs from?”
+			Mom (Neutral): “...”
+			Mom (Thinking): “I was part of a… group. Well, actually-”
+			Mom (Concern): “A gang.”
+			Mallory (Neutral): “A gang?”
+			Mom (Neutral): “Yes, a gang.”
+			Mallory: “How did you get caught?”
+			Mom (Neutral): “Like George Washington said\: ‘Truth will ultimately prevail where there is pains to bring it to light.’
+			- “How do you know that quote?”
+				Mom (Happy): “You learn a lot of things when you live with criminals.”
+				jump code
+			- “Who was going through the pain to bring the truth to light?”
+				update Mallory (Neutral)
+				Mom (Sad): “The families of the victims.”
+				Mallory (Thinking): “Victims?”
+				Mom (Sad): “The people that overdosed from the drugs I was trafficking.”
+				jump code
+	- “What was your childhood like?”
+		update Mallory (Thinking)
+		Mom (Neutral): “My childhood… huh…”
+		Mom (Happy): “Well, it was nice for what it was.”
+		Mallory (Neutral): “What do you mean?”
+		Mom (Neutral): “I had a very different childhood than you did.”
+		Mom (Happy): “My parents were criminals - just like you. That actually might be the only thing our childhood has in common.”
+		Mom (Concern): “And my parents, unlike yours, didn’t care about me or my brother.”
+		Mallory (Thinking): “Brother?”
+		Mom (Neutral): “You don’t know him. He died before you were born.”
+		Mallory (Neutral): “Oh.”
+		Mom (Sad): “Yeah, I still miss him.”
+		Mom (Neutral): “Anyways, my childhood was filled with crime. Everyone I knew was involved one way or another.”
+		Mom (Concern): “So I guess it was inevitable, that I’d, you know…”
+		Mom (Neutral): “Be a criminal, just like everyone else.”
+		jump code
+label code
+[style name="NoName"]
+*Knock knock knock*
+“One minute left!”
+[style name="Style"]
+Mom (Thinking): “Mallory, look at me!”
+Mom (Happy): “You should remember that no matter what happens, I’ll always have your back.”
+Mom (SuperHappy): “The day you and Dolion were born was the best day of our lives.”
+Mallory (Thinking): “When?”
+Mom (Happy): “You were born July 7 1997, and we even talk about it to this day.”
+Mom (Thinking): “I hope you never forget how much I love you.”
+[style name="NoName"]
+“Time’s up!”
+[style name="Style"]
+Mom (Sad): “I have to go, but I hope you visit me again soon, hija…”
+Mom (Neutral): “Bye.”
+Mallory (Neutral): “Goodbye.”
+leave Mom
+[style name="Style"]
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="2.0"]
+Mallory (Thinking): (I can't believe my mom was involved in drug trafficking...)
+Mallory: (My head hurts just from thinking about it...)
+Mallory: (I just want to rest and forget this is my reality...)
+[wait time="1.0"]
+[save slot="1"]
+jump Day-3/

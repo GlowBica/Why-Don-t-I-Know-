@@ -1,0 +1,923 @@
+[background arg="res://Game/Art/Backgrounds/bedroom.png" fade="1.0"]
+[wait time="1.0"]
+[style name="Style"]
+join Mallory left
+Mallory (Neutral): “I still have that private investigator’s phone number...”
+Mallory: “Carlos Manuel?”
+Mallory (Thinking): “He and Dad seemed to know each other…
+Mallory: “But Dad hates cops… I wonder how they know each other…”
+Mallory: “And the cops want me to work with Carlos.”
+Mallory (Neutral): “I should go to the crime scene today.”
+Mallory (Concerned): “Maybe I’ll remember something…”
+Mallory (Thinking): “Should I sneak in with Dolion, or see if Carlos can take me?”
+- Go with Carlos
+	jump goCarlos
+	leave Mallory
+	[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.5"]
+	[wait time="1.0"]
+	[background arg="res://Game/Art/Backgrounds/backyard.png" fade="0.5"]
+- Go with Dolion
+	leave Mallory
+	[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+	[wait time="1.0"]
+	jump goDolion
+
+label goDolion
+leave --All--
+[background arg="res://Game/Art/Backgrounds/street_suburbs.png" fade="0.5"]
+[wait time="1.0"]
+join Dolion (Neutral) right
+Dolion (Annoyed): “Hurry up, Mallory! We need to do this before any cops come back.”
+Mallory: “Where’d they go, anyways?”
+Mallory: “Shouldn’t they be, like, guarding this place?”
+Dolion (Happy): “I hid and waited across the street until they left for lunch break.”
+Dolion (Annoyed): “Pigs have to eat.”
+Mallory: “This seems risky...”
+Dolion: “We can’t stay for long. And this was your idea.”
+Dolion (Neutral): “The actual house is roped off, but the backyard isn’t.”
+Dolion (Happy): “Obviously the street is open, too.”
+- "Wouldn’t the cops have found everything useful?"
+	Dolion (Neutral): “Probably.”
+	Dolion: “Do you think it’s still worth looking around?”
+	Mallory: “I’m about to go to trial, probably without a lawyer…
+	Mallory: “I have to find something!”
+	Mallory: “Anything would help.”
+	Dolion (Upset): “I just don’t think this will help.”
+	Dolion (Neutral): “Like, the cops most likely have already taken any and all evidence.”
+	Mallory: “There could still be something useful there...”
+	Dolion: “This is dumb, but do whatever you want.”
+	- I’m gonna go look around the back.
+		Dolion (Neutral): “Sure, whatever.”
+		Dolion: “I’ll stand guard out here.”
+		Dolion (Annoyed): “But be careful!"
+		Dolion: "If you get caught by the cops, you’re done for.”
+		leave Dolion
+		set {Evidence.Letter} = true
+		label Find letter evidence
+		[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="1.0"]
+		[wait time="1.0"]
+		[background arg="res://Game/Art/Backgrounds/backyard.png" fade="0.0"]
+		- Letter
+			set {Evidence.Letter} = true
+			[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="1.0"]
+			[background arg="res://Game/Art/Evidences/BloodyLetter.png" fade="1.0"]
+			Mallory: “A letter?”
+			Mallory: “The sender address is from Mexico City.”
+			Mallory: “Oh, God. It’s drenched in blood.”
+			Mallory: “I think I might be sick…”
+			[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="1.0"]
+			[background arg="res://Game/Art/Backgrounds/backyard.png" fade="0.0"]
+			join Mallory center
+			Mallory: “There’s no way I can open this right now, but this is important…”
+			Mallory: “I think I recognize that sender’s neighborhood.”
+			leave Mallory
+			join Dolion right
+			Dolion (Annoyed): “Mallory! “I went to check on the cops, and I saw them enter another cafe.”
+			Dolion (Annoyed): “So, did you find anything?”
+			- "Yeah"
+				Mallory: “I found this letter from Mexico City.”
+				Mallory: “Isn’t this from the neighborhood where Mom and Dad would take us for family gatherings?”
+				Mallory: “We’d play with other kids in the smaller house, and our parents would go into the big house next door…”
+				Dolion: “Mallory."
+				Dolion: "You’re imagining things.”
+				Dolion (Angry): “Don’t start conspiracy theories out of nothing.”
+				Dolion (Annoyed): “This is a random dead guy and he happened to get a letter from Mexico. So what?”
+				Dolion (Neutral): “Come on. Let’s just go home.”
+				Dolion (Annoyed): “This was a waste of time.”
+				jump Call
+			- "No"
+				Mallory: “No, there’s absolutely nothing here.”
+				Dolion (Neutral): “See? I told you so.”
+				Dolion (Annoyed): “Now let’s go before the cops return.”
+				Dolion: “We’re going home.”
+				jump Call
+	- You’re right. Let’s just walk around the neighborhood a little.
+		Dolion (Annoyed): “This is such a nice neighborhood.”
+		Dolion (Happy): “That dead guy must’ve been rich!”
+		- "Did you know who he was?"
+			Dolion (Neutral): “...”
+			Dolion (Annoyed): “Of course not. Don’t be stupid.”
+			Dolion: “How would I know a rich guy?”
+			Dolion (Happy): “Anyways, I bet these houses belong to surgeons and shit.”
+			Dolion (Neutral): “Like, this is too nice.”
+			Mallory: “I’m tired. Let’s just go home.”
+			Mallory: “This was a waste of time…”
+			Dolion (Annoyed): “Okay, fine. But remember that this was your idea in the first place.”
+			jump Call
+		- "Yeah. I wonder why he died like that."
+			Dolion (Neutral): “...”
+			Dolion: “Who knows? It could be anything.”
+			Dolion (Annoyed): “Don’t worry about it. That’s the police’s problem, not ours.”
+			Dolion (Happy): “Just focus on the present moment.”
+			Dolion (Happy-Teeth): “Woah, that’s a fancy car over there!”
+			Mallory: “I think we should just go home.”
+			Mallory: “This was just a waste of time…”
+			Dolion (Neutral): “Okay, fine. But remember that this was your idea in the first place.”
+			label Call
+			Dolion (Neutral): “Hold on, Dad’s calling.”
+			Mallory: “Okay. Take your time.”
+			leave Dolion
+			join Mallory (Neutral) left
+			Mallory (Concerned): “I shouldn’t have come.”
+			[style name="NoName"]
+			*Ring Ring Ring*
+			[style name="Style"]
+			Mallory (Thinking): “Private Investigator Manuel is calling?”
+			- Pick up
+				label PickUp
+				Mallory (Neutral): “Hello?”
+				Carlos: “Hey Mallory.”
+				Carlos: “I was wondering if you wanted to go to the Plaza that's near the victims house?”
+				Mallory (Neutral): “What for?”
+				Carlos: “To ask around and see if anybody saw or knows anything.”
+				Carlos: “So, do you want to go?”
+				Mallory: “I-”
+				leave Mallory
+				join Dolion (Neutral) right
+				Dolion: “Yo!”
+				Dolion (Annoyed): “Dad’s asking if you want to go to the Plaza nearby.”
+				Mallory (Thinking): “What for?”
+				Dolion: “To ask the people around there and hopefully find someone who knows something.”
+				Dolion: “The Plaza isn’t far from here.”
+				Dolion (Neutral): “So what do you say?”
+				- “I’ll go!”
+					Mallory: “I’ll order an Uber and meet him there!”
+					Dolion: “Okay, I just texted him saying that you said yes.”
+					Mallory: “Are  you coming?”
+					Dolion (Annoyed): “No, I have a group assignment to do.”
+					Mallory: “Okay, then I’ll see you home.”
+					Dolion (Happy): “Bye!”
+					leave Dolion
+					join Mallory left
+					Mallory: “…”
+					Mallory (Thinking): “Are you still there?”
+					Carlos: “Alive and well.”
+					Mallory (Concerned): “I’m sorry, but I’m going to go with my dad instead.”
+					Carlos: “...”
+					Carlos: “Okay.”
+					Carlos: “Take care, then.”
+					Mallory (Neutral): “You too.”
+					[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="1.0"]
+					leave Mallory
+					[wait time="1.0"]
+					jump UberDriver
+				- “Tell him I have other plans.”
+					Dolion (Neutral): “Okay, I just texted him saying that you can’t today.”
+					Dolion (Annoyed): “I have a group assignment to do, so I’ll see you home later.”
+					Mallory: “Okay, thank you!”
+					Dolion (Happy): “Bye!”
+					leave Dolion
+					Mallory: “Bye!”
+					join Mallory center
+					Mallory: “...”
+					Mallory (Thinking): “Are you still there?”
+					Carlos: “Alive and well.”
+					Mallory (Neutral): “I’ll meet you there.”
+					Carlos: “You can tell me where you are and I’ll pick you up.”
+					Mallory (Neutral): “Okay.”
+					[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="1.0"]
+					leave Mallory
+					jump PlazaWithCarlos
+				- “I’m tired…”
+					Mallory: “I just want to go home…”
+					Dolion: “Okay, I just texted him saying that you can’t today…”
+					Dolion: “I have a group assignment to do, but I’ll go home with you first and then leave…”
+					Mallory: “Okay, thank you.”
+					Dolion: “Hold on, a group member is calling me right now.”
+					Mallory: “That’s okay, I’ll order us an Uber in the meantime.”
+					leave Dolion
+					Mallory: “…”
+					Mallory: “Are you still there?”
+					Carlos: “Alive and well.”
+					Mallory: “I’m sorry, but I’m really tired.”
+					Carlos: “...”
+					Carlos: “Okay.”
+					Carlos: “Take care and get some rest.”
+					Mallory: “Thank you, bye.”
+					jump end
+			- Don’t pick up
+				…
+				Mallory: “I wonder why he’s calling.”
+				Mallory: “Whatever, I don’t care.”
+				Mallory: “I wonder who wrote this le-”
+				*Ring Ring Ring*
+				Mallory: “Again?!”
+				Mallory: “Maybe it’s important.”
+				- Pick up
+					jump PickUp
+				- Don’t pick up
+					…
+					Mallory: “Maybe he got the hint now.”
+					Mallory: “I should hurry up before Dolion comes back…”
+					join Dolion center
+					Dolion: “Yo!”
+					Dolion: “Dad’s asking if you want to go to the Plaza nearby.”
+					Mallory: “What for?”
+					Dolion: “To ask the people around there and hopefully find someone who knows something.”
+					Dolion: “The Plaza isn’t far from here.”
+					Dolion: “So what do you say?”
+				- “I’ll go!”
+					Mallory: “I’ll order an Uber and meet him there!”
+					Dolion: “Okay, I just texted him saying that you said yes.”
+					Mallory: “Are  you coming?”
+					Dolion: “No, I have a group assignment to do.”
+					Mallory: “Okay, then I’ll see you home.”
+					Dolion: “Bye!”
+					jump UberDriver
+				- “I’m tired…”
+					Mallory: “I just want to go home.”
+					Dolion: “Okay, I just texted him saying that you can’t today.”
+					Dolion: “I have a group assignment to do, but I’ll go home with you first and then leave.”
+					Mallory: “Okay, thank you.”
+					jump end
+
+label goCarlos
+leave --All--
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+[wait time="1.0"]
+[background arg="res://Game/Art/Backgrounds/street_suburbs.png" fade="0.5"]
+join Carlos (Happy) right
+Carlos (Happy): “Hi again, Mallory. I’m happy that you called me.”
+Mallory: “Hi, Carlos. I just really want to get to the bottom of this.”
+Carlos (Guilty): “Well, we have that in common.”
+- Who do you work for?
+	Carlos (Neutral): “I was hired by a mutual… friend of your father’s.”
+	Mallory: “So I must know this friend, too?”
+	Carlos (Thinking): “I don’t think so.”
+	Carlos: “Do you know many of your dad’s friends are from Mexico?”
+	Mallory: “No, I guess not...”
+	Mallory: “I just see them at family gatherings.”
+	Carlos (Happy): “Imagine that the family gathering has hired me to be here, then.”
+	Mallory: “Sure. Okay.”
+	Mallory: “Then, you are trying to find out what happened, right?”
+	Carlos (Thinking): “That, and… to clean up any loose information. Mysteries where there shouldn’t be mysteries.”
+	- That sounds suspicious
+		Carlos (Neutral): “I’m in the business of suspicion. The important thing is that all the facts are straight, and you can walk away from this clean.”
+		jump crime scene
+	- I don’t really get it
+		Carlos (Thinking): “Don’t worry about it. The important thing is that all the facts are straight, and you can walk away from this clean.”
+		jump crime scene
+- Do you know my dad and sister?
+	Carlos (Neutral): “...”
+	Carlos (Guilty): “In a manner of speaking. We share a mutual friend.”
+	Carlos: “You shouldn’t think too hard about it though.”
+	Mallory: “What am I supposed to think?”
+	Mallory: “I’m really asking.”
+	Mallory: “I’m so lost, I don’t know what to do anymore.”
+	Carlos (Thinking): “Think that I’m on your side.”
+	Carlos: “Even if it seems like no one else is. The cops, or even your family.”
+	Carlos (Guilty): “I really do want to help you...”
+	- The cops?
+		Carlos (Thinking): “Police are like dogs chasing rabbits. Every rabbit looks the same to them - all they want is to catch one. Do you understand?”
+		Mallory: “I think so.”
+		Carlos (Neutral): “It’s not personal; they don’t have an opinion on whether or not you did it. Guilty, or not guilty, they want a conviction.”
+		Carlos (Thinking): “ It doesn’t have to be you, but right now?”
+		Carlos: “You’d be the easiest.”
+		Carlos (Guilty): “Keep that in mind with them.”
+		Mallory: “I get it.”
+		jump crime scene
+	- My family?
+		Carlos (Neutral): “...”
+		Carlos (Thinking): “Be careful with your family.”
+		- What is that supposed to mean?
+			Carlos (Thinking): “Sometimes, it’s… look. It’s complicated.”
+			Mallory: “I know that. You’re an investigator.”
+			Mallory: “Isn’t your whole job to answer complicated questions?”
+			Carlos (Guilty): “Ha. I guess so.”
+			Carlos: “Fine, Mallory. Just… don’t believe everything your family says, the same thing goes for the cops.”
+			Carlos (Thinking): “Everyone has a stake in this, but I don’t believe they all want the best for you. And I feel… sorry about that.”
+			Mallory: “...”
+			Mallory: “Okay...”
+			jump crime scene
+		- I trust my family.
+			Carlos: “I know. I’m just saying to be careful.”
+			Mallory: “They’re my family! They’d never hurt me.”
+			Carlos: “...”
+			Carlos: “Do you really believe that?”
+			Mallory: “...”
+			Mallory: “I don’t like this.”
+			Carlos: “Nothing about this situation is likable. Just be careful.”
+			jump crime scene
+		- They’ve been acting so… hostile towards me.
+			Carlos: “I’m sure they have been.”
+			Mallory: “What?”
+			Mallory: “What do you mean?”
+			Carlos: “Keep your guard up, that’s all. Just… don’t believe everything your family says, the same thing goes for the cops.”
+			Carlos: “Everyone has a stake in this, but I don’t believe they all want the best for you. And I feel… sorry about that.”
+			Mallory: “...”
+			Mallory: “Okay.”
+label crime scene
+leave --All--
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.5"]
+[wait time="1.0"]
+[background arg="res://Game/Art/Backgrounds/victim_house.png" fade="0.5"]
+join Carlos (Neutral) center
+Carlos (Neutral): “Here we are. This is where it happened.”
+Mallory: “This house? This is where I…”
+Carlos (Thinking): “Yes.”
+Carlos: “The police found you here, unconscious at the bottom of those stairs.”
+Mallory: “Can I look around?”
+Carlos (Neutral): “Of course. Take your time - the police know we’re here.”
+Carlos: “As long as you don’t touch anything marked with tape or a cone, you can explore.”
+Mallory: “Thank you, Carlos.”
+Carlos (Guilty): “It’s the least I can do.”
+leave Carlos
+join Mallory (Neutral) left
+Mallory (Thinking): “The back door is wide open. Looks like someone kicked it in.”
+Mallory (Neutral): “The kitchen looks pretty clean. So does the living room.”
+Mallory (Concerned): “Looking at those stairs gives me the worst headache…”
+Mallory (Thinking): “I wonder what I was doing in this place…”
+Mallory (Concerned): “Ow…”
+label Explore
+if {Days.3.Exploring} == 3:
+	jump Carlos rejoin
+- Check back door | [if {Days.3.BackDoor} == false]
+	set {Days.3.BackDoor} = true
+	set {Days.3.Exploring} += 1
+	Mallory (Thinking): “Jeez. It’s hanging off its hinges.”
+	Mallory: “Covered in boot prints, too.”
+	Mallory (Neutral): “Whoever did this must have been really angry.”
+	Mallory (Thinking): “Hey, there’s something under that nearby table.”
+	Mallory: “It must’ve slid underneath.”
+	Mallory: “...”
+	leave Mallory
+	[background arg="res://Game/Art/Evidences/Doli-Lighter.png" fade="0.5"]
+	Mallory: “This is Dolion’s lighter, isn’t it?”
+	Mallory: “It has her initials on it...”
+	[background arg="res://Game/Art/Backgrounds/victim_house.png" fade="0.5"]
+	join Mallory right
+	Mallory (Thinking): “But how could it be here? That makes no sense.”
+	Mallory: “Dolion… what are you doing?”
+	jump Explore
+- Check stairs | [if {Days.3.Stairs} == false]
+	set {Days.3.Stairs} = true
+	set {Days.3.Exploring} += 1
+	Mallory (Concerned): “Ugh, my head.”
+	Mallory (Thinking): “What is happening?”
+	Mallory (Concerned): “I feel sick. I don’t even want to look at this.”
+	jump Explore
+- Check kitchen | [if {Days.3.Kitchen} == false]
+	set {Days.3.Kitchen} = true
+	set {Days.3.Exploring} += 1
+	Mallory (Thinking): “This just looks like a normal kitchen.
+	Mallory (Neutral): “I guess nothing happened here.”
+	jump Explore
+label Carlos rejoin
+leave Mallory
+join Carlos (Neutral) right
+Carlos (Thinking): “Are you done?”
+Mallory: “Yeah, I think so.”
+Carlos: “Did you find anything useful, or did you at least remember anything from that night?”
+- “No, I found nothing.”
+	Carlos (Neutral): “Bummer.”
+	Carlos (Thinking): “You don’t remember anything either?”
+	Mallory: “No.”
+	jump Plaza?
+- “I found my twin’s lighter.”
+	set {Evidence.Lighter} = true
+	Carlos (Thinking): “Your sister’s?”
+	Carlos: “Are you sure it’s hers?”
+	Mallory: “Yeah, it has her initials.”
+	Mallory: “And I recognize it, I know it’s hers.”
+	Carlos (Neutral): “I wonder why that’s here.”
+	Carlos: “Alright, we should turn this in, and have forensics check the finger prints.”
+	label Plaza?
+	Carlos: “...”
+	Carlos (Thinking): “By the way, do you want to go to the plaza nearby?”
+	Mallory: “Why would we go there?”
+	Carlos (Neutral): “To ask around and see if anybody saw or knows anything.”
+	Carlos (Thinking): “So, do you want to go?”
+	Mallory: “I-”
+	[style name="NoName"]
+	*Ring Ring Ring*
+	[style name="Style"]
+	Mallory: “Sorry, my dad is calling.”
+	Carlos (Neutral): “It’s okay, take your time, I’ll wait in the other room.”
+	Mallory: “Thanks…”
+	leave Carlos
+	join Mallory left
+	label Dad Calling
+	[style name="NoName"]
+	*Click*
+	[style name="Style"]
+	Dad: “Hey hija,what are you doing right now?”
+	Mallory (Thinking): “Oh, I’m, uh…”
+	Mallory (Neutral): “I’m out right now.”
+	Dad: “Well, do you want to go with me?”
+	Mallory (Thinking): “Go where?”
+	Dad: “To the plaza near where the crime happened.”
+	Dad: “We could ask around, and hopefully find out if anyone around the area knows something.”
+	Mallory (Neutral): “Oh…”
+	Dad: “So, what do you say Mal?”
+	- Yeah, let’s go!
+		update Mallory (Happy)
+		Dad: “Okay! I’ll meet you there in…”
+		Dad: “Does an hour sound good?”
+		Mallory (SuperHappy): “Yeah! I’ll see you there.”
+		Dad: “Okay then! Bye mi amor.”
+		Mallory (Happy): “Bye Dad!”
+		[style name="NoName"]
+		*Click*
+		[style name="Style"]
+		leave Mallory
+		join Carlos (Neutral) right
+		Carlos: “...”
+		Carlos (Thinking): “So this means you’ll go with your father instead, right?”
+		Mallory: “Um, yeah…”
+		Carlos (Neutral): “Okay.”
+		Carlos (Guilty): “Well, I guess we’re done for today.”
+		Carlos: “We should go.”
+		Carlos (Thinking): “Do you want me to drive you there?”
+		- If you don’t mind
+			Carlos (Happy): “Of course I don’t. I am offering, after all.”
+			Carlos (SuperHappy): “Let’s go!”
+			jump CarlosDriver
+		- It’s okay, I’ll order an Uber
+			Carlos (Neutral): “Okay.”
+			Carlos: “Well, if you ever need anything, you have my number.”
+			Carlos (Guilty): “Goodbye, Mallory.”
+			jump UberDriver
+	- “Sorry, I don’t feel like going today.”
+		update Mallory (Neutral)
+		Dad: “Oh.”
+		Dad: “That’s okay, you should probably be resting.”
+		Dad: “I’ll see you home later today.”
+		Mallory (Thinking): “Okay, I’ll see you later.”
+		[style name="NoName"]
+		*Click*
+		[style name="Style"]
+		leave Mallory
+		join Carlos (Neutral) right
+		Carlos (Happy): “So, are we going or what?”
+		- “Yeah, let’s go!”
+			jump Carlos
+	- “No, I feel tired.”
+		leave Mallory
+		join Carlos right
+		Mallory (Thinking): “I’m sorry, but my headache is really bothering me right now.”
+		Carlos (Neutral): “It’s okay - you’re still recovering from your accident.”
+		Carlos (Thinking): “But I won’t keep you here any longer. You should get some rest.”
+		Mallory: “Thank you so much for coming here with me.”
+		Carlos (Neutral): “I should be thanking you!”
+		Carlos: “I really do want to help you, and you letting me makes me happy.”
+		Carlos (Neutral): “...”
+		Carlos (Neutral): “We should head out now.”
+		Mallory: “Yeah.”
+		jump end
+
+label CarlosDriver
+leave --All--
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+[wait time="1.0"]
+[background arg="res://Game/Art/Backgrounds/car_interior.png" fade="0.0"]
+join Carlos (Neutral) left
+Carlos: “We got here quickly.”
+Carlos (Thinking): “What time did your father say he was going to get here?”
+Mallory: “An hour.”
+Carlos (Neutral): “He’ll get here in 50 minutes then.”
+Carlos: “...”
+Carlos (Thinking): “Do you want to grab some coffee while we wait for him?”
+- “No, it’s okay.”
+	Mallory: “Thank you for the offer, but my dad would get really upset if he saw us together…”
+	Carlos (Happy): “That’s okay, I understand.”
+	Carlos (Thinking): “Well, if you ever need anything, you have my number.”
+	Mallory: “Yeah…”
+	- Thanks for the ride
+		Mallory: “Um, thank you for the ride!”
+		Carlos (Happy): “It was no problem.”
+		Carlos (Neutral): “I hope you find something useful with your father.”
+		Mallory: “Yeah, um, I’m going to go now.”
+		Carlos: “Ha. Sure.”
+		Carlos (Neutral): “Bye!”
+		Mallory: “Bye!”
+		Mallory: “Have a good rest of your day!”
+		Carlos (Happy): “You, too.”
+		jump Dad
+
+label UberDriver
+leave --All--
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+[wait time="1.0"]
+[background arg="res://Game/Art/Backgrounds/car_interior.png" fade="0.0"]
+join Mallory left
+Mallory (Happy): “Thanks for the ride.”
+[style name="NoName"]
+“No problem.”
+[style name="Style"]
+label Dad
+leave --All--
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="1.0"]
+[wait time="1.0"]
+[background arg="res://Game/Art/Backgrounds/shop 2.png" fade="1.0"]
+join Mallory right
+Mallory (Thinking): “There's 50 minutes left until Dad gets here.”
+Mallory: “I should order something to eat while I wait for Dad.”
+leave Mallory
+join Dad (Smile) right
+Dad: “Hey Mal!”
+Dad: “You’re here early!”
+Mallory: “Dad.”
+Mallory: “You’re also here really early.”
+Mallory: “Didn’t you say to meet here in an hour?”
+Dad (Neutral): “Yeah, but I only said that to give you enough time to get here.”
+Dad (Smile): “I didn’t want to rush you.”
+Dad: “But now that we’re both here, let’s ask around!”
+Mallory: “Yeah.”
+leave --All--
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.5"]
+[wait time="2.0"]
+[background arg="res://Game/Art/Backgrounds/shop 2.png" fade="0.5"]
+join Dad (Annoyed) right
+Dad: “I can’t believe they don’t want to show us anything!”
+Mallory: “It’s understandable, though.”
+Mallory: “We don’t have any authority to make them show us their footage.”
+Dad (Angry): “Cuantos cabrones. If they want authority I can show them some…”
+Mallory: “What?”
+Mallory: “Dad, calm down-”
+leave Dad
+join OldLady left
+OldLady: “Excuse me.”
+OldLady (Thinking): “Aren’t you that nice girl from a couple of days ago?”
+- “Do I know you?”
+	OldLady (Smile): “It is you!”
+	OldLady: “You helped me with some groceries!”
+	OldLady (Thinking): “You were walking toward the street where that man died.”
+	- “You saw me before it happened?”
+		OldLady (Thinking): “Yeah… it was late.”
+		OldLady (Neutral): “You were heading that way just before it happened…”
+		OldLady (Smile): “If my old memory serves me right of course, hahahaha.”
+		OldLady (Neutral): “Oh, but I have to go now, I have to cook for my grandson.”
+		- “No!”
+			OldLady (Neutral): “...!”
+			Mallory: “You can’t just leave after saying that!”
+			Mallory: “Please…”
+			Mallory: “Please tell me everything that happened that night.”
+			OldLady (Thinking): “What a shame.”
+			OldLady: “You seemed like such a nice and cheerful girl.”
+			OldLady: “I wonder what happened.”
+			OldLady (Neutral): “...”
+			OldLady (Thinking): “Nothing of importance happened that night.”
+			OldLady: “I bought groceries, and you helped me carry them to my car.”
+			OldLady: “Then you continued down that street in a hurry.”
+			OldLady (Thinking): “Saying that there was something you had to do.”
+			OldLady (Neutral): “But that’s all I know.”
+			OldLady (Thinking): “The morning after you were on the news, although I don’t remember what for…”
+			OldLady (Smile): “Whatever it was, I hope you accomplished your goal!”
+			Mallory: “My… goal?”
+			OldLady (Neutral): “Good heavens, look at the time!”
+			OldLady: “I really do have to go now!”
+			OldLady (Smile): “I hope I was helpful!”
+			OldLady: “Bye!”
+			leave OldLady
+			Mallory: “...”
+			join Dad (Neutral) right
+			Dad: “...”
+			Dad (Annoyed): “Do…”
+			Dad: “Do you remember what the reason for you going there was?”
+			Mallory: “No.”
+			Mallory: “But I’m getting a really bad headache again…”
+			jump SplitUp?
+		- “Oh yes, of course.”
+			Mallory: “Thank you for talking with us.”
+			OldLady (Smile): “Anytime!”
+			OldLady: “Bye!”
+			leave OldLady
+			join Dad (Neutral) right
+			Dad: “...”
+			Dad: “Do…”
+			Dad: “Do you remember her? Or that night?”
+			Mallory: “No.”
+			Mallory: “But I’m getting a really bad headache again…”
+label SplitUp?
+Dad (Sad): “If it hurts a lot, I can continue asking the remaining stores, and you can stay in the car if you want…”
+- “Good idea…”
+	Mallory: “I think I’ll just stay in the car and hope that this headache goes away…”
+	Dad: “Okay…”
+	Dad (Sad): “Remember not to push yourself, okay?”
+	- “Okay…”
+		Dad (Smile): “I’ll be back with, hopefully, useful information.”
+		Mallory: “Okay, thanks Dad…”
+		leave Dad
+		[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="1.5"]
+		[wait time="1.0"]
+		[background arg="res://Game/Art/Backgrounds/car_interior.png" fade="0.5"]
+		join Mallory left
+		Mallory: “These constant headaches are getting annoying.”
+		Mallory: “Ugh…”
+		leave Mallory
+		[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.5"]
+		[wait time="2.0"]
+		[style name="NoName"]
+		Bark Bark Bark
+		[style name="Style"]
+		- Wake up
+			[background arg="res://Game/Art/Backgrounds/car_interior.png" fade="0.5"]
+			Mallory (Concerned): “That dumb dog is so loud…”
+			- Check on the dog
+				Mallory (Thinking): “Maybe the dog is hurt or something…”
+				Mallory: “I should check on it just in case.”
+				leave Mallory
+				[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.5"]
+				[wait time="1.0"]
+				[background arg="res://Game/Art/Backgrounds/upright.png" fade="0.5"]
+				Mallory: “What is that dog barking at?”
+				Mallory: “A trash can? Really?”
+				Mallory: “I should’ve just stayed in the car…”
+				[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.5"]
+				*CRASH*
+				[background arg="res://Game/Art/Backgrounds/downfall.png" fade="0.5"]
+				Mallory: “Now the dog is crashing the trash can?”
+				Mallory: “This was a waste of ti-”
+				Mallory: “...”
+				Mallory: “Are those…”
+				[background arg="res://Game/Art/Evidences/BloodyClothes.png" fade="0.5"]
+				Mallory: “Are those Dolion’s and Dad’s clothes?”
+				Mallory: “No. Can’t be - why would they be here? We don't even live near this area.”
+				Mallory: “...”
+				Mallory: “Why are th-they burned…”
+				Mallory: “And st-stained w-w–with b-blood….”
+				[background arg="res://Game/Art/Backgrounds/downfall.png" fade="0.5"]
+				join Mallory (Concerned) right
+				Mallory: “What should I do?”
+				- Call Carlos
+					set {Evidence.BC} = true
+					Mallory (Concerned): “I should call Carlos.”
+					Mallory (Thinking): “He’ll know what to do.”
+					Mallory (Concerned): “And he can figure out if it really is my family’s clothes…”
+					[style name="NoName"]
+					*Ring*
+					*Click*
+					[style name="Style"]
+					Carlos: “Hello?”
+					- Tell him what you found
+						leave Mallory
+						[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.5"]
+						[wait time="2.0"]
+						[background arg="res://Game/Art/Backgrounds/downfall.png" fade="0.5"]
+						join Mallory (Concerned) right
+						Carlos: “Don’t worry - I’ll have these sent to the forensics team.”
+						Carlos: “Hopefully this will be beneficial for your case.”
+						- “I hope it doesn’t belong to my family”
+						Carlos: “I… understand.”
+						Carlos: “I’ll head over to that location now and take it to be examined.”
+						Carlos: “I’ll let you know when the results are out.”
+						Mallory (Neutral): “Okay…”
+						Mallory: “Thank you.”
+						Carlos: “Anytime.”
+						Mallory: “Bye.”
+						Carlos: “Bye.”
+						[style name="NoName"]
+						*Click*
+						[style name="Style"]
+						Mallory (Neutral): “I should go back to the car before Dad notices I’m not there…”
+						jump BackToCar
+				- Leave clothes
+					Mallory (Thinking): “I don’t even know whose clothes these are.”
+					Mallory (Neutral): “They look like Dad’s and Dolion’s, but that doesn’t mean it’s theirs.”
+					Mallory (Thinking): “And where would this blood come from?”
+					Mallory: “Why would it be here? Of all places?”
+					Mallory (Neutral): “...”
+					Mallory: “I should go back to the car before Dad notices I’m not there.”
+					label BackToCar
+					leave --All--
+					[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="1.0"]
+					[wait time="1.0"]
+					[background arg="res://Game/Art/Backgrounds/car_interior.png" fade="1.0"]
+					join Dad (Annoyed) right
+					Dad: “Where were you?”
+					Mallory: ”I need to get some air, so I walked around the area for a little bit.”
+					Dad (Smile): “As long as you feel better, I’m content.”
+					- “Did you find anything?”
+					Dad (Annoyed): “Nobody wanted to let me see their footage.”
+					Dad (Neutral): “No one else seems to have any information about that night…”
+					Mallory: “Oh…”
+					Dad: “...”
+					Dad: “Let’s just go home and relax, yeah?”
+					Mallory: “Yeah…”
+					jump end
+
+
+label Carlos
+leave --All--
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+[wait time="2.0"]
+[background arg="res://Game/Art/Backgrounds/car_interior.png" fade="0.0"]
+join Carlos (Neutral) left
+Carlos (Thinking): “Are you ready?”
+Carlos (Neutral): “If you ever need a break, just let me know.”
+- “Yeah.”
+Mallory: “We need to know if anyone saw anything that night…”
+Carlos: “Alright.”
+Carlos (Happy): “Let’s ask around and hope we’re lucky.”
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.5"]
+Carlos: “Excuse me, I’m Private Investigator Manuel.”
+[wait time="2.0"]
+[background arg="res://Game/Art/Backgrounds/shop 2.png" fade="0.5"]
+[style name="NoName"]
+“We just have cameras inside the store. Sorry.”
+[style name="Style"]
+Carlos: “...”
+Carlos (Neutral): “Thank you for your time.”
+Mallory: “...”
+Carlos (Happy): “Worth a shot, right?”
+leave Carlos
+join OldLady left
+OldLady: “Excuse me.”
+OldLady (Thinking): “Aren’t you that nice girl from a couple of days ago?”
+- “Do I know you?”
+	OldLady (Smile): “It is you!”
+	OldLady: “You helped me with some groceries!”
+	OldLady (Thinking): “You were walking toward the street where that man died.”
+	- “You saw me before it happened?”
+		OldLady (Thinking): “Yeah… it was late.”
+		OldLady (Neutral): “You were heading that way just before it happened…”
+		OldLady (Smile): “If my old memory serves me right of course, hahahaha.”
+		OldLady (Neutral): “Oh, but I have to go now, I have to cook for my grandson.”
+		- “No!”
+			OldLady (Neutral): “...!”
+			Mallory: “You can’t just leave after saying that!”
+			Mallory: “Please…”
+			Mallory: “Please tell me everything that happened that night.”
+			OldLady (Thinking): “What a shame.”
+			OldLady: “You seemed like such a nice and cheerful girl.”
+			OldLady: “I wonder what happened.”
+			OldLady (Neutral): “...”
+			OldLady (Thinking): “Nothing of importance happened that night.”
+			OldLady: “I bought groceries, and you helped me carry them to my car.”
+			OldLady: “Then you continued down that street in a hurry.”
+			OldLady (Thinking): “Saying that there was something you had to do.”
+			OldLady (Neutral): “But that’s all I know.”
+			OldLady (Thinking): “The morning after you were on the news, although I don’t remember what for…”
+			OldLady (Smile): “Whatever it was, I hope you accomplished your goal!”
+			Mallory: “My… goal?”
+			OldLady (Neutral): “Good heavens, look at the time!”
+			OldLady: “I really do have to go now!”
+			OldLady (Smile): “I hope I was helpful!”
+			OldLady: “Bye!”
+			leave OldLady
+			Mallory: “...”
+			join Carlos (Neutral) right
+			Carlos: “...”
+			Carlos (Thinking): “Do you know her?”
+			Mallory: “Not that I remember.”
+			Carlos (Thinking): “I’m assuming you don’t know what she’s talking about either?”
+			Mallory: “You assume correct.”
+			Carlos (Neutral): “...”
+			Mallory: “Ugh, I’m getting a really bad headache again…”
+			jump CarlosSplitUp?
+SplitUp?
+- “Oh yes, of course.”
+	Mallory: “Thank you for talking with us.”
+	OldLady (Smile): “Anytime!”
+	OldLady: “Bye!”
+	leave OldLady
+	join Carlos (Neutral) right
+	Carlos: “...”
+	Carlos (Thinking): “Do you know her?”
+	Mallory: “Not that I remember.”
+	Carlos: “I’m assuming you don’t know what she’s talking about either?”
+	Mallory: “You assume correct.”
+	Carlos (Neutral): “...”
+	Mallory: “Ugh, I’m getting a really bad headache again…”
+label CarlosSplitUp?
+set {Evidence.CCTV} = -2} = true
+Carlos (Guilty): “If it hurts a lot, I can continue asking the remaining stores, and you can stay in the car if you want.”
+- “Good idea…”
+	Mallory: “I think I’ll just stay in the car and hope that this headache goes away.”
+	Carlos (Neutral): “Okay.”
+	Carlos (Thinking): “I’ll try to find out if anyone knows anything.”
+	- “Thank you.”
+		Carlos: “Get some rest, and I’ll see you in a bit.”
+		leave Carlos
+		[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="1.5"]
+		[wait time="1.0"]
+		[background arg="res://Game/Art/Backgrounds/car_interior.png" fade="0.5"]
+		join Mallory left
+		Mallory: “These constant headaches are getting annoying.”
+		Mallory: “Ugh…”
+		leave Mallory
+		[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.5"]
+		[wait time="2.0"]
+		[style name="NoName"]
+		Bark Bark Bark
+		[style name="Style"]
+		- Wake up
+			[background arg="res://Game/Art/Backgrounds/car_interior.png" fade="0.5"]
+			Mallory (Concerned): “That dumb dog is so loud…”
+			- Check on the dog
+				Mallory (Thinking): “Maybe the dog is hurt or something…”
+				Mallory: “I should check on it just in case.”
+				leave Mallory
+				[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.5"]
+				[wait time="1.0"]
+				[background arg="res://Game/Art/Backgrounds/upright.png" fade="0.5"]
+				Mallory: “What is that dog barking at?”
+				Mallory: “A trash can? Really?”
+				Mallory: “I should’ve just stayed in the car…”
+				[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.5"]
+				*CRASH*
+				[background arg="res://Game/Art/Backgrounds/downfall.png" fade="0.5"]
+				Mallory: “Now the dog is crashing the trash can?”
+				Mallory: “This was a waste of ti-”
+				Mallory: “...”
+				Mallory: “Are those…”
+				[background arg="res://Game/Art/Evidences/BloodyClothes.png" fade="0.5"]
+				Mallory: “Are those Dolion’s and Dad’s clothes?”
+				Mallory: “No. Can’t be - why would they be here? We don't even live near this area.”
+				Mallory: “...”
+				Mallory: “Why are th-they burned…”
+				Mallory: “And st-stained w-w–with b-blood….”
+				[background arg="res://Game/Art/Backgrounds/downfall.png" fade="0.5"]
+				join Mallory (Concerned) right
+				Mallory: “What should I do?”
+				- Call Carlos
+					set {Evidence.BC} = true
+					Mallory (Concerned): “I should call Carlos.”
+					Mallory (Thinking): “He’ll know what to do.”
+					Mallory (Concerned): “And he can figure out if it really is my family’s clothes…”
+					[style name="NoName"]
+					*Ring*
+					*Click*
+					[style name="Style"]
+					Carlos: “Hello?”
+					- Tell him what you found
+						leave Mallory
+						[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.5"]
+						[wait time="2.0"]
+						[background arg="res://Game/Art/Backgrounds/downfall.png" fade="0.5"]
+						join Mallory (Concerned) right
+						Carlos: “Don’t worry - I’ll have these sent to the forensics team.”
+						Carlos: “Hopefully this will be beneficial for your case.”
+						- “I hope it doesn’t belong to my family”
+						Carlos: “I… understand.”
+						Carlos: “I’ll head over to that location now and take it to be examined.”
+						Carlos: “I’ll let you know when the results are out.”
+						Mallory (Neutral): “Okay…”
+						Mallory: “Thank you.”
+						Carlos: “Anytime.”
+						Mallory: “Bye.”
+						Carlos: “Bye.”
+						[style name="NoName"]
+						*Click*
+						[style name="Style"]
+						Mallory: “I should go back to the car…”
+						Mallory: “This headache is killing me…”
+						[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.5"]
+						[wait time="1.0"]
+						[background arg="res://Game/Art/Backgrounds/car_interior.png" fade="0.5"]
+						Carlos: “Hey.”
+						Mallory: “Hey”
+						Carlos: “I found some footage that could potentially raise some concerns…”
+						Carlos: “Aside from the clothes that you found.”
+						Carlos: “Ha. Maybe you should be a private investigator too.”
+						- “Concerns?”
+						- “Footage?”
+						Carlos: “I found some footage of your father and twin coming into this plaza, a little after when the murder happened.”
+						Mallory: “And?”
+						Carlos: “Their clothes were dirty.”
+						Mallory: “Y-you think…”
+						Carlos: “Yeah, I think the clothes you found are your family’s.”
+						Carlos: “The fact that these are semi-burnt just supports my thought that these might be theirs.”
+						Carlos: “And…”
+						- “And?”
+						Carlos: “They might be involved, either in this case, or something else…”
+						Mallory: “You don’t even know that for sure!”
+						Carlos: “You’re right.”
+						Carlos: “I’ll take this to the forensics team after I drop you off at home.”
+						Carlos: “I’ll tell you the results when I find out.”
+						Mallory: “Okay.”
+						Carlos: “...”
+						Carlos: “Sorry. I didn’t mean to be so brusque. I know that this is your family.”
+						“...”
+						jump end
+					- Leave clothes
+						label LeaveClothesCarlos
+						Mallory: “I don’t even know whose clothes these are.”
+						Mallory: “They look like Dad’s and Dolion’s, but that doesn’t mean it’s theirs.”
+						Mallory: “And where would this blood come from?”
+						Mallory: “Why would it be here? Of all places?”
+						Mallory: “...”
+						Mallory: “I should go back to the car before Carlos notices I’m not there.”
+						[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.5"]
+						[wait time="1.0"]
+						[background arg="res://Game/Art/Backgrounds/car_interior.png" fade="0.5"]
+						Carlos: “Hey.”
+						Mallory: “Hey”
+						Carlos: “I found some footage that could potentially raise some concerns.”
+						- “Concerns?”
+						- “Footage?”
+						Carlos: “I found some footage of your father and twin coming into this plaza the night of the murder.”
+						Mallory: “And?”
+						Carlos: “Their clothes seemed to be dirty.”
+						Carlos: “If I had the clothing, I could have the clothing tested.”
+						Mallory: “...”
+						Carlos: “...”
+						Carlos: “Well, I guess I’ll take you home.”
+						Carlos: “Sorry for not finding anything concrete.”
+						Mallory: “...”
+						label end
+						leave Dad
+						leave --All--
+						[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+						[wait time="2.0"]
+						jump Day-4/

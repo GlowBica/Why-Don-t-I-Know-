@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl3b4jls42qti"]
+
+[ext_resource type="Script" path="res://Game/Days/Scripts/day_6.gd" id="1_lvmsa"]
+
+[node name="Day-6" type="Node2D"]
+script = ExtResource("1_lvmsa")

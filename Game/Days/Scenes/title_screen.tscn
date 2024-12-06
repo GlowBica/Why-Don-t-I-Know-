@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://6f3aguxq6814"]
+
+[ext_resource type="Script" path="res://Game/Days/Scripts/title_screen.gd" id="1_gjt65"]
+[ext_resource type="Texture2D" uid="uid://dna2n0tpusd6b" path="res://Game/Art/Backgrounds/Titles/Quit-TitleScreen.png" id="2_mscsr"]
+[ext_resource type="FontFile" uid="uid://co0p2qu0rtf5x" path="res://Game/Art/Layout/Fonts/cour.ttf" id="3_hpr3r"]
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_gjt65")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_mscsr")
+
+[node name="PLAY" type="Button" parent="."]
+offset_left = 754.0
+offset_top = 558.0
+offset_right = 1167.0
+offset_bottom = 679.0
+theme_override_fonts/font = ExtResource("3_hpr3r")
+theme_override_font_sizes/font_size = 83
+text = "play"
+
+[node name="QUIT" type="Button" parent="."]
+offset_left = 759.0
+offset_top = 754.0
+offset_right = 1166.0
+offset_bottom = 857.0
+theme_override_fonts/font = ExtResource("3_hpr3r")
+theme_override_font_sizes/font_size = 77
+text = "quit"
+
+[connection signal="pressed" from="PLAY" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="QUIT" to="." method="_on_quit_pressed"]

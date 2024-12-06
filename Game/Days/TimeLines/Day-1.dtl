@@ -1,0 +1,481 @@
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="1.0"]
+[background arg="res://Game/Art/Backgrounds/hospital.png" fade="1.0"]
+Mallory: "Ugh..."
+join Dolion (Upset) right
+[style name="NoName"]
+Dolion: “Mallory! Are you okay? Are you fine?"
+Dolion: "I’m so sorry… does it hurt?"
+Dolion (Sad): "It's all my fault, I'm so sorry..."
+[style name="Style"]
+Mallory: "Who are you?"
+[style name="NoName"]
+Dolion (Upset): "I-it's me, Dolion. Your twin...H-here. L-Look in the mirror..."
+join Mallory (Neutral) leftmost
+[style name="Style"]
+update Mallory (Neutral)
+Dolion (Sad): "It's all my fault, I'm so sorry... I can't believe you don't remember me."
+leave Mallory
+- “You don’t have to apologize…”
+	set {Days.1.Dolion} = true
+	jump Don't Apologize
+- "Why are you apologizing?"
+	set {Days.1.Dolion} = false
+	jump Why're Apologizing?
+
+label Don't Apologize
+Dolion (Neutral): "Mallory. You've always had this habit of forgiving too easily."
+Mallory: "I… do? I don't remember anything."
+Dolion (Upset): "Nothing?"
+Mallory: "Nothing..."
+- "Did I forgive you often?"
+	Dolion (Happy): “Haha… yeah.”
+	Dolion (Neutral): "It's weird explaining it to you, but…  I’ve been thinking about us a lot lately, I guess."
+	Dolion (Upset): “Uh, it’s not like I did anything horrible to you, or that I'd do anything super bad often.
+	Dolion: "Just when I’d say something out of anger that I don’t mean. I’d apologize and stuff."
+	Dolion: "I don’t know."
+	Dolion: "I thought about that a lot while you were…”
+	jump Pos-Questions
+
+label Pos-Questions
+- “What type of stuff would you say?” | [if {Days.1.Clicked.Positive.type} == false]
+	set {Days.1.Clicked.Positive.type} = true
+	jump TypeofStuff
+
+- "Did I do something to make you mad?” | [if {Days.1.Clicked.Positive.did} == false]
+	set {Days.1.Clicked.Positive.did} = true
+	jump MakeYouMad?
+
+- "If I always forgave you easily, you probably didn't do things that bad." | [if {Days.1.Clicked.Positive.always} == false]
+	set {Days.1.Clicked.Positive.always} = true
+	jump AlwaysForgave
+
+- "..." | [if {Days.1.Clicked.Positive.always} == true] [Days.Clicked.Positive.did="true" Days.1.Clicked.Positive.type="true"]
+	jump ...
+
+label TypeofStuff
+Dolion (Neutral): ”...”
+Dolion (Annoyed): “I don’t know. Whatever.”
+Dolion (Upset): “The occasional ‘You’re so stupid’, ‘You literally don’t know anything’."
+Dolion: "The worst I think has to be ‘I wish you weren’t my sister’, but I’ve only said that like a few times.”
+jump Pos-Questions
+
+
+label MakeYouMad?
+Dolion (Neutral): “No, and if you ever did, it was when we were kids and I didn’t want to share my dolls with you.”
+Dolion (Happy): “Uh, but don’t worry! I’ve gotten better at controlling myself.”
+jump Pos-Questions
+
+
+label AlwaysForgave
+Dolion (Neutral): “...”
+Dolion (Neutral): “Of course I didn’t! It was just stupid comments that I’d blurt out whenever I got angry.”
+Dolion (Happy): “But I’ve gotten better at controlling myself over the years, so it doesn’t happen that often anymore.”
+jump Pos-Questions
+
+
+label ...
+Dolion (Happy): "I always wondered how our relationship would've been if you and I had the same temper." (smile)
+Dolion (Happy-Teeth): "I think we would blow up all the time, and that it'd only take a bit more time to reconcile compared to now."
+jump OurRelationship
+
+label OurRelationship
+- "Blow up?" | [if {Days.1.Clicked.Positive.blow?} == false]
+	set {Days.1.Clicked.Positive.blow?} = true
+	jump BlowUp?
+
+- "Do you blow up often?" | [if {Days.1.Clicked.Positive.often?} == false]
+	set {Days.1.Clicked.Positive.often?} = true
+	jump Often?
+
+- "Do I have anger issues too?" | [if {Days.1.Clicked.Positive.DoI?} == false]
+	set {Days.1.Clicked.Positive.DoI?} = true
+	jump AngerIssues?
+
+- "Sounds like we have a good relationship." | [if {Days.1.Clicked.Positive.blow?} == true] [Days.Clicked.Positive.DoI?="true" Days.1.Clicked.Positive.often?="true"]
+	set {Days.1.Clicked.Positive.Good} = true
+	Dolion (Happy-Teeth): "Yeah, of course! We're best friends."
+	Dolion (Happy-Teeth): "We go to school together, go out together, we share a lot of the same friends, and we talk all the time.
+	Dolion: "We also tell each other everything."
+	Dolion (Happy-Teeth): "There's no one in the world that could ever take your place in my life."
+	Dolion: "I mean, come on. You're my twin."
+	jump Police Enter
+
+
+label BlowUp?
+Dolion (Neutral): "Oh…”
+Dolion (Neutral): "It's weird explaining it to you, but…  I’ve been thinking about it a lot lately, I guess."
+Dolion (Upset): "Basically, I have a bad habit of blowing up- uh- I have bad anger management, I guess is how my therapist puts it."
+jump OurRelationship
+
+
+label Often?
+Dolion (Neutral): "I guess so."
+Mallory: "I guess so?"
+Dolion (Upset): "Like, I get annoyed quickly, and if I don't walk away from the situation, it gets hard to control my anger."
+Dolion (Neutral): "So I get annoyed often, but I try to not blow up by trying to be by myself."
+Mallory: "Oh..."
+Dolion (Happy): "But over the years I've gotten better!"
+Dolion (Neutral): "So, if I storm off or something, please don't take it personally."
+jump OurRelationship
+
+
+label AngerIssues?
+Dolion (Happy): "No, not even close!"
+Dolion (Happy-Teeth): "You've always been great at handling your emotions. If anything, you've helped me deal with my own emotions."
+Dolion (Happy-Teeth): "Oh, and over the years I've gotten better! So, if I storm off or something, please don't take it personally."
+jump OurRelationship
+
+
+label Why're Apologizing?
+Dolion (Neutral): "U-um"
+Dolion (Neutral): "..."
+Dolion (Upset): "You don't remember?"
+Mallory: "I... don't remember anything."
+Dolion (Upset): "Nothing?!"
+Mallory: "Nothing..."
+Dolion (Sad): "Oh no... I'm sorry..."
+Dolion: "It's my fault..."
+Dolion: "I shouldn't have argued with you that day"
+label Neg-Questions
+- ”Why do you keep apologizing?” | [if {Days.1.Clicked.Negative.Apologizing?} == false]
+	set {Days.1.Clicked.Negative.Apologizing?} = true
+	jump KeepApologizing?
+- "That day?" | [if {Days.1.Clicked.Negative.Day?} == false]
+	set {Days.1.Clicked.Negative.Day?} = true
+	jump ThatDay?
+- "Was I in an accident?" | [if {Days.1.Clicked.Negative.WasI?} == false]
+	set {Days.1.Clicked.Negative.WasI?} = true
+	jump Accident?
+- "What did you do?" | [if {Days.1.Clicked.Negative.DidYou?} == false]
+	set {Days.1.Clicked.Negative.DidYou?} = true
+	jump What did you do?
+- "What did we argue about?" | [if {Days.1.Clicked.Negative.DidWe?} == false]
+	set {Days.1.Clicked.Negative.DidWe?} = true
+	jump What did we argue about?
+
+label KeepApologizing?
+Dolion (Sad): "Because it's my fault..."
+Mallory: "Your fault?"
+Dolion (Upset): "Yes, I shouldn't have argued with you that day."
+jump Neg-Questions
+
+
+label ThatDay?
+Mallory: "How long have I been asleep for?"
+Dolion (Upset): "You've been in a coma for 2 days."
+jump Neg-Questions
+
+
+label Accident?
+Dolion (Upset): "From what they told me, yes. Apparently you fell down some stairs..."
+Mallory: "Do you know where it happened?"
+Dolion (Upset): "No, they haven’t told me anything."
+jump Neg-Questions
+
+
+label What did you do?
+Dolion (Annoyed): "I didn't do anything!"
+Dolion (Annoyed): "You actually think I would hurt you?
+- "I didn't say that!"
+	Mallory: "I didn't mean it like that..."
+	Dolion (Upset): "You implied it though!"
+	Dolion (Annoyed): "Asking as if I was some sort of criminal that would hurt their own twin..."
+	Dolion (Upset): "Unbelievable..."
+	Dolion (Sad): "Does being twins mean nothing to you?..."
+	jump Neg-Questions
+
+
+label What did we argue about?
+Dolion (Neutral): "..."
+Dolion (Upset): "We were arguing about the police."
+Mallory: "The police?"
+Dolion (Annoyed): "Yeah. You said you wanted to work for the police in the future, which is insane."
+- "Why is working for the police insane?"
+	Dolion: "Did you actually forget everything?"
+	Dolion (Neutral): "..."
+	Dolion (Annoyed): "Mom got arrested 5 years ago. They framed her, and made it look like she did it, when she didn't."
+	- "Who is ‘they’?"
+		Dolion (Angry): "The cops, obviously!"
+		Dolion (Angry): "Who else would be able to frame her?"
+		jump Police Enter
+	- "What was she framed of doing?"
+		Dolion (Neutral): "Drug trafficking."
+		jump Police Enter
+- "Why would arguing over the police cause me to be in an accident?”
+	Dolion (Annoyed): "Because working with traitors like them is a death wish."
+	Dolion (Annoyed): "I still can't believe you ever considered working for them."
+	- "You didn't answer my question."
+		Dolion (Neutral): "It doesn't matter."
+		- "It does matter."
+			Dolion (Annoyed): "We were arguing, okay?!"
+			Dolion (Neutral): "We... we were arguing... And then you stormed off that night."
+			Dolion (Upset): "I didn't know where you went, but I assumed you were with your friends until I got a call letting me know you were in the hospital."
+		- "..."
+			Dolion (Upset): "So, I'm sorry."
+			Dolion (Sad): "Maybe if I hadn't argued with you, maybe nothing would've happened..."
+			Dolion: "and you wouldn't have gone - God knows where."
+			Mallory: "So that's why you think it's your fault?"
+			Dolion (Sad): "Of course."
+			Dolion: "Maybe if I hadn't let my temper get the better of me, maybe you wouldn't have stormed off the way you did."
+			jump Police Enter
+	- "Okay, but what does that have to do with the accident?"
+		Dolion (Annoyed): "We were arguing, okay?!"
+		Dolion (Upset): "We... We were arguing. And then you stormed off that night."
+		Dolion (Sad): "I didn't know where you went..."
+		Dolion: "But I assumed you were with your friends until I got a call letting me know you were in the hospital."
+		jump Police Enter
+
+
+label Police Enter
+[style name="NoName"]
+*Knock Knock*
+update Dolion (Neutral) rightmost [move_time="0.5"]
+join PoliceOfficer (Neutral) center
+[style name="Style"]
+PoliceOfficer (Neutral): “Excuse me.”
+PoliceOfficer (Sus): “Ms. Castillo. I know you’ve just woken up, but your arrest will have to proceed now that you’re responsive.”
+if {Days.1.Dolion} == true:
+	join PoliceOfficer center
+	Dolion (Neutral): “Hey. Look, I know you’re just doing your job, but Mallory just woke up from a coma.”
+	Dolion (Annoyed): “Can't this wait? My sister needs to rest.”
+	PoliceOfficer (Sus): “I’m sorry, but I can’t do that.”
+	PoliceOfficer (Neutral): “You were found unconscious in the house of the victim, Ms. Castillo.”
+	PoliceOfficer (Sus): “You will have to be arrested, unless you pay bail. But even then, you will have to go to court for your upcoming trial.”
+	Dolion (Angry): “That’s ridiculous!”
+	Dolion (Upset): “My dad is on his way to pay bail. You don’t have to take her right now, right?”
+	PoliceOfficer (Mad): “Unless I see the official documentation, I will have to detain Mallory.”
+	jump Carlos Enters
+
+if {Days.1.Dolion} == false:
+	Dolion (Annoyed): “...”
+	leave Dolion
+	update PoliceOfficer left [move_time="0.5"]
+	PoliceOfficer (Mad): “You were found unconscious in the house of the victim, Ms. Castillo.”
+	PoliceOfficer (Sus): “Now that you’re awake, we’ll detain you unless you pay bail. But even then, you will have to go to court for your upcoming trial.”
+	label Police-Questions
+	- "Bail?” | [if {Days.1.Clicked.Police.Bail} == false]
+		set {Days.1.Clicked.Police.Bail} = true
+		jump Bail?
+	- “I was found in the house of the victim?” | [if {Days.1.Clicked.Police.House} == false]
+		set {Days.1.Clicked.Police.House} = true
+		jump victim?
+	- “When is my trial?” | [if {Days.1.Clicked.Police.Trial} == false]
+		set {Days.1.Clicked.Police.Trial} = true
+		jump trial?
+	- "Okay, I understand" | [if {Days.1.Clicked.Police.Trial} == true] [Days.1.Clicked.Police.Bail="true" Days.1.Clicked.Police.House="true"]
+		jump Carlos Enters
+
+label Bail?
+PoliceOfficer (Neutral): “Basically, you or someone that can take responsibility over you has to pay a certain amount of money, determined by court, to release you from detention.”
+PoliceOfficer (Neutral): "You would still have to show up to your trial though."
+jump Police-Questions
+
+
+label victim?
+PoliceOfficer (Mad): “Yes.”
+PoliceOfficer (Mad): “You were found unconscious inside the victim’s house, holding the murder weapon.”
+jump Police-Questions
+
+
+label trial?
+PoliceOfficer (Neutral): “In one week.”
+Mallory: “One week?!”
+PoliceOfficer (Neutral): “One week.”
+Mallory: “Will I be taken to jail?”
+PoliceOfficer (Neutral): “If you show me that you, or someone you know, has paid bail, you will no longer have to be under arrest.”
+jump Police-Questions
+
+
+label Carlos Enters
+[style name="NoName"]
+*Knock Knock*
+if {Days.1.Dolion} == true:
+	update PoliceOfficer (Neutral) right [move_time="0.5"]
+	update Dolion (Annoyed) rightmost
+if {Days.1.Dolion} == false:
+	update PoliceOfficer (Neutral) right [move_time="0.5"]
+	leave Dolion
+join Carlos (Neutral) leftmost
+Carlos (Neutral): “Am I interrupting?”
+[style name="Style"]
+PoliceOfficer: “I wasn’t expecting to see you here, Carlos.”
+Carlos: “I go where I’m needed. Well, where I’m hired to be.”
+Mallory: “Who are you?”
+PoliceOfficer (Neutral): “This is Investigator Carlos Manuel.”
+Carlos (SuperHappy): “In the flesh.”
+PoliceOfficer (Sus): *Scoff*
+PoliceOfficer (Neutral): “He’s eccentric, but Carlos is excellent at his job.”
+PoliceOfficer (Sus): “He will work on your case, and investigate what really happened.”
+PoliceOfficer (Sus): “I recommend that you cooperate with him, but it’s up to you. Either way, the truth will come out.”
+PoliceOfficer (Mad): “Anyways, you will have to undergo an official interrogation in three days.”
+label Dad Enter
+leave Carlos
+leave PoliceOfficer
+join Dad left
+join Dolion right
+Dad (SuperHappy): “Mal! You’re awake!”
+Dolion (Neutral): “...”
+Mallory: "I'm sorry, but who are you?"
+Dad (Sad): “Mal?”
+Dolion (Upset): “She doesn’t remember you.”
+Dad (Annoyed): “What?!”
+join Carlos (Neutral) leftmost
+update Dad center
+update Dolion rightmost
+Carlos (Happy): “So the whole family is together again.”
+Dad (Neutral): “What are you doing here, Carlos?”
+Carlos (Thinking): “Mutual interest, you could say.”
+leave Dolion
+join PoliceOfficer rightmost
+PoliceOfficer (Mad): “Sorry to interrupt, but sir, if you don’t have the documentation for Ms. Castillo’s bail, I’ll have to arrest her.”
+Dad (Neutral): “Oh right, here.”
+leave --All--
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="1.0"]
+[wait time="2.0"]
+[background arg="res://Game/Art/Backgrounds/hospital.png" fade="1.0"]
+join PoliceOfficer rightmost
+join Dad (Neutral) center
+join Carlos (Neutral) leftmost
+PoliceOfficer (Neutral): “This will do.”
+PoliceOfficer (Mad): “Remember to go to the police station in three days, and that your trial is in one week.”
+PoliceOfficer (Neutral): “I’ll take my leave now.”
+leave PoliceOfficer
+Carlos (Neutral): “I don’t want to interrupt the happy reunion. I’ll take my leave as well.”
+Carlos (Happy): “Mallory. If you ever want to contact me, you know where to call.”
+leave Carlos
+Dad (Sad): “Your doctors want to run some tests. Apparently, memory loss isn’t a good sign.”
+Mallory (Concerned): “Oh.”
+Dad (Smile): “It’ll be okay. You’re tough; you’ll manage.”
+Mallory (Concerned): “...”
+Dad (Sad): “We’ll go home when they discharge you. This won’t take long. I promise.”
+Mallory (Neutral): “Okay.”
+leave --All--
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+[wait time="1.2"]
+jump home
+
+label home
+[background arg="res://Game/Art/Backgrounds/family_room.png" fade="0.0"]
+join Mallory center
+Mallory (Concerned): “Sigh”
+Mallory (Sad): "I can't believe this is happening to me..."
+leave Mallory
+join Dolion left
+join Dad (Sad) rightmost
+Dolion (Neutral): “Mallory.”
+Dolion (Neutral): “I know you don't remember everything. Which is why you have to understand…"
+Dolion (Annoyed): "This is serious. You can’t just jump into this with the police.”
+- “Fine”
+	Mallory: “I don’t remember anything from that night.”
+	Mallory (Concerned): “So it might not be the best idea to work with them right now…”
+	Dolion (Neutral): “Or ever.”
+	Dad (Annoyed): “Dolion!”
+	Dolion (Annoyed): “Come on. You know I’m right.”
+	Dad (Smile): “Thank you, Mallory.”
+	Mallory (Thinking): ”Yeah.”
+	Dad (Smile): “How about you visit your Ma tomorrow?”
+	Dad (Sad): “It’s hard to think she’s nearing 5 years of imprisonment...”
+	update Dolion (Upset)
+	Dad (Neutral): “But it might help your memories come back if you talk to her.”
+	Mallory (Neutral): “Yeah, maybe that’s a good idea.”
+	[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+	jump explore
+- "Then what should I do?"
+	Mallory (Neutral): "They think I’m involved, and they're going to investigate what really happened."
+	Mallory (Thinking): "Shouldn’t I try to help them?”
+	- "What if I did do it?"
+		Mallory (Thinking): "I mean, even if I did commit the crime, they’ll find out with or without me…”
+		Dolion (Annoyed): "Mal, come on, don’t be an idiot.”
+		Dad (Annoyed): "You didn’t do anything. You’re my daughter. And my daughters could never do something like this."
+		Dad (Sad): "You would never do that to anyone.”
+		Dolion (Annoyed): “Yeah, Mal, you’re crazy for even thinking that.”
+	- “If you guys are so sure I didn’t do it, why can't I work with them?"
+		Mallory (Happy): "All we have to do is work with them and-”
+		Dolion (Annoyed): "No.”
+		Mallory (Concerned): “But-”
+		Dad (Annoyed): “Mallory!”
+		Mallory (Thinking): “But listen, I-”
+		Dad (Angry): “Mallory Castillo, you will NOT be working with the police!”
+		Mallory (Neutral): ...
+		Mallory (Angry): “If you guys just want me to stay out of it and act like nothing is happening, then you're completely out of your mind!”
+		Dad (Angry): “Mal, you don’t even remember what happened!"
+		Dolion (Angry): "How are you supposed to help the police?"
+		Dad (Angry): "How do you know they aren’t setting you up?”
+		Dolion (Angry): "Anything you say or do could get twisted, and before you know it, you’re in deeper trouble.!
+		jump I Know
+	- "What if they find something that can clear my name?"
+		update Dolion (Annoyed)
+		Mallory (Thinking): "If I didn’t do anything wrong, why wouldn’t I cooperate?!"
+		Mallory (Concerned): "Wouldn’t that only make me look more guilty?!”
+		Dad (Sad): “Mallory, please. You have to trust us on this."
+		Dolion (Upset): "We only want the best for you!”
+label I Know
+Mallory (Concerned): “I know, but what if the best for me-
+- "what if it’s working with-”
+Dolion (Annoyed): “You know what?"
+Dolion (Angry): "Do what you want!”
+leave Dolion
+Dad (Angry): “Dolion!”
+update Dad (Sad) center
+[wait time="1.0"]
+Dad (Annoyed): Sigh
+[wait time="1.0"]
+Dad (Sad): “How about you visit your Ma, Katrina, tomorrow?"
+Dad (Sad): "Maybe that will help you decide what’s… best for you.”
+Mallory (Neutral): "Okay…"
+jump explore
+
+label explore
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+leave --All--
+[background arg="res://Game/Art/Backgrounds/bedroom.png" fade="0.0"]
+join Mallory (Sad) center
+Mallory (Sad): “I don’t know what to do.”
+Mallory (Concerned): “The police said that I was holding the murder weapon.”
+Mallory (Sad): “And I can’t remember a thing! Did I really- I mean, what if I…”
+Mallory (Concerned): “Ugh, I have such a headache…”
+label Room
+[background arg="res://Game/Art/Backgrounds/bedroom.png" fade="0.0" transition="Simple Fade"]
+- Picture Frame | [if {Days.1.Clicked.Room.Picture} == false]
+	set {Days.1.Clicked.Room.Picture} = true
+	jump Picture
+- Guitar | [if {Days.1.Clicked.Room.Guitar} == false]
+	set {Days.1.Clicked.Room.Guitar} = true
+	jump Guitar
+- Bed (sleep)
+	jump Bed
+
+label Picture
+leave Mallory
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.5"]
+[background arg="res://Game/Art/Props/Pic.png" fade="0.0"]
+Mallory (Happy): “Ha. I think that I remember this.”
+Mallory (Thinking): “We were on… vacation? Yeah. Visiting family in Mexico City.”
+Mallory (SuperHappy): “Ma wasn’t in jail yet, and Dad still had a job. Those were the good days.”
+Mallory (Thinking): “Dolion called me dumb for wanting to take pictures. It kind of hurt my feelings at the time.”
+Mallory (Neutral): “Then again, Dolion is always making mean comments.”
+Mallory (Neutral): “Dolion…”
+Mallory (Concerned): “Ouch - my head.”
+jump Room
+
+label Guitar
+leave Mallory
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.5"]
+[background arg="res://Game/Art/Props/Guitar-1.png" fade="0.0"]
+Mallory (Neutral): “Well, I remember that I’m not very good at playing guitar.”
+Mallory (Thinking): “I think Cousin Diego gave this to me as a birthday present. I was really little.”
+Mallory (Concerned): “Cousin Diego was kind of scary. All my cousins are weird, I guess.”
+Mallory (Thinking): “They carry cash and guns around. Some of them come all the way across the border for family gatherings.”
+Mallory (Neutral): “How is Cousin Diego related to us, anyways?”
+jump Room
+
+label Bed
+join Mallory center
+Mallory (Concerned): “My head hurts.”
+Mallory (Sad): “I don’t want to go to sleep. What if I don’t wake up again?”
+Mallory (Sad): “But I’m so tired…”
+leave Mallory
+[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="2.0"]
+[wait time="2.0"]
+[save slot="1"]
+jump Day-2/

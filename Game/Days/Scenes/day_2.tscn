@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bt3qs0ykucs8a"]
+
+[ext_resource type="Script" path="res://Game/Days/Scripts/day_2.gd" id="1_6ffit"]
+[ext_resource type="Texture2D" uid="uid://08geq1kafrxl" path="res://Game/Art/Backgrounds/street_suburbs.png" id="2_n865m"]
+[ext_resource type="Texture2D" uid="uid://n6nwg3r5xdvf" path="res://Game/Art/Backgrounds/car_interior.png" id="3_1xjpi"]
+[ext_resource type="Texture2D" uid="uid://d2lpcuxwl7hlp" path="res://Game/Art/Backgrounds/jail.png" id="3_tnig6"]
+
+[node name="Day-2" type="Node2D"]
+script = ExtResource("1_6ffit")
+
+[node name="SuburbStreet" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_n865m")
+
+[node name="Car" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("3_1xjpi")
+
+[node name="Jail" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("3_tnig6")

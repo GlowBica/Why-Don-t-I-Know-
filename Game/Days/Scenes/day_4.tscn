@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://8aqf0goxboap"]
+
+[ext_resource type="Script" path="res://Game/Days/Scripts/day_4.gd" id="1_asw1q"]
+[ext_resource type="PackedScene" uid="uid://cy4r1owfrpos4" path="res://Game/Days/Scenes/evidences.tscn" id="2_0wkx3"]
+[ext_resource type="Texture2D" uid="uid://ds5k4vq4jv1it" path="res://Game/Art/Backgrounds/police_station.png" id="3_as16q"]
+[ext_resource type="Texture2D" uid="uid://b4osgx6716pap" path="res://Game/Art/Backgrounds/morgue.png" id="4_7sfo5"]
+[ext_resource type="Texture2D" uid="uid://bxmee0qubbayw" path="res://Game/Art/Backgrounds/police_station_lobby.png" id="5_4gta5"]
+
+[node name="Day-4" type="Node2D"]
+position = Vector2(960, 540)
+script = ExtResource("1_asw1q")
+
+[node name="Evidences" parent="." instance=ExtResource("2_0wkx3")]
+
+[node name="PoliceStation" type="Node2D" parent="."]
+
+[node name="InterrogationRoom" type="Sprite2D" parent="PoliceStation"]
+texture = ExtResource("3_as16q")
+
+[node name="Morgue" type="Sprite2D" parent="PoliceStation"]
+texture = ExtResource("4_7sfo5")
+
+[node name="Lobby" type="Sprite2D" parent="PoliceStation"]
+texture = ExtResource("5_4gta5")

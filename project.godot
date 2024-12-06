@@ -1,0 +1,198 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Why Don't I Know?"
+run/main_scene="res://Game/Days/Scenes/game.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+
+[dialogic]
+
+directories/dch_directory={
+"Carlos": "res://Game/Art/Characters/Carlos.dch",
+"Dad": "res://Game/Art/Characters/Dad.dch",
+"Dolion": "res://Game/Art/Characters/Dolion.dch",
+"Foreperson": "res://Game/Art/Characters/Foreperson.dch",
+"Judge": "res://Game/Art/Characters/Judge.dch",
+"Mallory": "res://Game/Art/Characters/Mallory.dch",
+"Mom": "res://Game/Art/Characters/Mom.dch",
+"Morgan": "res://Game/Art/Characters/Morgan.dch",
+"Old Lady": "res://Game/Art/Characters/Old Lady.dch",
+"OldLady": "res://Game/Art/Characters/OldLady.dch",
+"PoliceOfficer": "res://Game/Art/Characters/PoliceOfficer.dch",
+"unit_test_character": "res://Tests/Resources/unit_test_character.dch"
+}
+directories/dtl_directory={
+"Day-1": "res://Game/Days/TimeLines/Day-1.dtl",
+"Day-2": "res://Game/Days/TimeLines/Day-2.dtl",
+"Day-3": "res://Game/Days/TimeLines/Day-3.dtl",
+"Day-4": "res://Game/Days/TimeLines/Day-4.dtl",
+"Day-5": "res://Game/Days/TimeLines/Day-5.dtl",
+"Day-6": "res://Game/Days/TimeLines/Day-6.dtl",
+"Day-7": "res://Game/Days/TimeLines/Day-7.dtl",
+"Timeline/Day-1": "res://Game/Days/Timeline/Day-1.dtl"
+}
+variables={
+"Clicked": {
+"1st": false,
+"clothes": false,
+"door": false,
+"family": false,
+"knife": false
+},
+"Days": {
+"1": {
+"Clicked": {
+"Negative": {
+"Apologizing?": false,
+"Day?": false,
+"DidWe?": false,
+"DidYou?": false,
+"WasI?": false
+},
+"Police": {
+"Bail": false,
+"House": false,
+"Trial": false
+},
+"Positive": {
+"DoI?": false,
+"Good": false,
+"always": false,
+"blow?": false,
+"did": false,
+"often?": false,
+"type": false
+},
+"Room": {
+"Bed": false,
+"Guitar": false,
+"Picture": false
+}
+},
+"Dolion": false
+},
+"2": {
+"Clicked": {
+"Caught?": false,
+"Jail?": false
+},
+"Years": {
+"7": false,
+"9": false,
+"Correct": false
+}
+},
+"3": {
+"BackDoor": false,
+"Exploring": 0,
+"Kitchen": false,
+"Stairs": false
+},
+"4": {
+"AllRoom?": 0,
+"Dad": false,
+"Doli": false,
+"Family": false,
+"Friends": false,
+"Kitchen": false,
+"Secret Vault": {
+"Code": "",
+"Count": 0
+}
+},
+"5": {
+"BC": false,
+"CCTV-1": false,
+"CCTV-2": false,
+"Hair": false,
+"Interrogation": {},
+"Knife": false,
+"Lighter": false,
+"Morgue": false,
+"Property": false
+},
+"6": {
+"GoodEnd?": false
+},
+"7": {
+"Clothes": false,
+"Door": false,
+"Family": false,
+"Knife": false,
+"NoFurther": false,
+"Persuasion": 0
+}
+},
+"Evidence": {
+"BC": true,
+"CCTV-2": false,
+"Fam-Doc": false,
+"Letter": false,
+"Lighter": false
+}
+}
+glossary/default_case_sensitive=true
+layout/style_list=["res://Game/Art/Style.tres", "res://Game/Art/Layout/NoName.tres"]
+layout/default_style="res://Game/Art/Style.tres"
+extensions_folder="res://addons/dialogic_additions"
+text/letter_speed=0.01
+text/initial_text_reveal_skippable=true
+text/text_reveal_skip_delay=0.1
+text/advance_delay=0.1
+text/autoadvance_per_character_delay=0.1
+text/autoadvance_ignored_characters_enabled=true
+audio/max_channels=4.0
+animations/join_default_length=0.5
+animations/join_default_wait=true
+animations/leave_default_length=0.5
+animations/leave_default_wait=true
+animations/cross_fade_default_length=0.5
+choices/autofocus_first=true
+choices/delay=0.2
+choices/reveal_delay=0
+choices/reveal_by_input=false
+save/autosave_delay=60.0
+save/encryption_on_exports_only=true
+text/autopauses={}
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=2
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
+
+[input]
+
+dialogic_default_action={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194309,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":32,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":88,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+]
+}
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

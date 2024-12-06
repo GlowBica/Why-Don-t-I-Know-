@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b50gjdhfwaw60"]
+
+[ext_resource type="Script" path="res://Game/Days/Scripts/day_5.gd" id="1_f2ftr"]
+
+[node name="Day-5" type="Node2D"]
+script = ExtResource("1_f2ftr")

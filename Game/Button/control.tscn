@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://umxhxyp22wel"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d546u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5pk0y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_txiqf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4l0vs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7xm20"]
+
+[sub_resource type="Theme" id="Theme_1pa6k"]
+Button/styles/disabled = SubResource("StyleBoxEmpty_d546u")
+Button/styles/focus = SubResource("StyleBoxEmpty_5pk0y")
+Button/styles/hover = SubResource("StyleBoxEmpty_txiqf")
+Button/styles/normal = SubResource("StyleBoxEmpty_4l0vs")
+Button/styles/pressed = SubResource("StyleBoxEmpty_7xm20")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_1pa6k")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1078.0
