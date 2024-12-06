@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsmn7og5dh6ab"]
+
+[ext_resource type="Texture2D" uid="uid://1xgf46al7101" path="res://Game/Art/Backgrounds/Titles/StartScreen.png" id="1_yjaxv"]
+[ext_resource type="Script" path="res://Game/Days/Scenes/opening_screen.gd" id="2_hy6fr"]
+[ext_resource type="PackedScene" uid="uid://umxhxyp22wel" path="res://Game/Button/control.tscn" id="3_xjqnc"]
+
+[node name="OpeningScreen" type="Node2D"]
+
+[node name="Opening Screen" type="Sprite2D" parent="."]
+position = Vector2(962, 540)
+texture = ExtResource("1_yjaxv")
+script = ExtResource("2_hy6fr")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="Control" parent="." instance=ExtResource("3_xjqnc")]
+
+[node name="Button2" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1078.0
+
+[connection signal="timeout" from="Timer" to="Opening Screen" method="_on_timer_timeout"]
+[connection signal="pressed" from="Control/Button2" to="Opening Screen" method="_on_button_2_pressed"]
