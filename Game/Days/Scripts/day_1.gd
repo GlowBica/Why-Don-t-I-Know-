@@ -1,23 +1,29 @@
 extends Node2D
 
-@onready var Start_Screen = preload("res://Game/Days/Scenes/title_screen.tscn") as PackedScene
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	Dialogic.signal_event.connect(_Start_Over)
-	pass # Replace with function body.
+@onready var TitleScreen = preload("res://Game/Days/Scenes/title_screen.tscn") as PackedScene
+@onready var pause_menu = $Pause/PauseMenu
+@onready var menu_button = $MenuButton/Control
+var paused = false
 
-func _Start_Over(argument: String):
-	if argument == "startover":
-		get_tree().change_scene_to_packed(Start_Screen)
-	#
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if Input.is_action_just_pressed("pause"): 
+		Dialogic.paused = true
+		pauseMenu()
+		
+func _on_menu_button_pressed():
+	Dialogic.paused = true
+	pauseMenu()
 
+func pauseMenu():
+	if paused:
+		Dialogic.paused = false
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else:
+		pause_menu.show()
+		Engine.time_scale = 0
+	paused = !paused
 
-func _on_button_pressed():
-	
-	Dialogic.start("Day-1")
-	pass # Replace with function body.
-
+#func _on_timeline_ended():
+#	get_tree().change_scene_to_packed(TitleScreen)
 	

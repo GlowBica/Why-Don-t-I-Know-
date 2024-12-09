@@ -1,17 +1,50 @@
-[gd_scene load_steps=3 format=3 uid="uid://dngldmvwfhybt"]
+[gd_scene load_steps=9 format=3 uid="uid://dngldmvwfhybt"]
 
 [ext_resource type="Script" path="res://Game/Days/Scripts/day_1.gd" id="1_jhrqo"]
 [ext_resource type="Texture2D" uid="uid://do0mmpfgn4tch" path="res://Game/Art/Backgrounds/DraftBackground.png" id="2_lyhmb"]
+[ext_resource type="PackedScene" uid="uid://bprmu0iiohg5u" path="res://Game/Days/Scenes/pause_menu.tscn" id="3_855hv"]
+[ext_resource type="PackedScene" uid="uid://4p76dvbuuhsm" path="res://Game/Button/menuButton.tscn" id="4_bi4kl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5pivj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwgr5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_453hh"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_wpoe6"]
+Button/styles/hover = SubResource("StyleBoxFlat_5pivj")
+Button/styles/normal = SubResource("StyleBoxFlat_xwgr5")
+Button/styles/pressed = SubResource("StyleBoxFlat_453hh")
 
 [node name="Day-1" type="Node2D"]
 script = ExtResource("1_jhrqo")
 
-[node name="Hospital" type="Sprite2D" parent="."]
+[node name="Day-1" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Hospital" type="Sprite2D" parent="Day-1"]
 position = Vector2(960, 540)
 texture = ExtResource("2_lyhmb")
 
-[node name="Button" type="Button" parent="."]
-offset_right = 1918.0
-offset_bottom = 1078.0
+[node name="Pause" type="CanvasLayer" parent="."]
+layer = 3
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="PauseMenu" parent="Pause" instance=ExtResource("3_855hv")]
+visible = false
+
+[node name="MenuButton" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="Control" parent="MenuButton" instance=ExtResource("4_bi4kl")]
+
+[node name="Button" type="Button" parent="MenuButton"]
+offset_left = 54.0
+offset_top = 52.0
+offset_right = 166.0
+offset_bottom = 178.0
+theme = SubResource("Theme_wpoe6")
+
+[connection signal="pressed" from="MenuButton/Button" to="." method="_on_menu_button_pressed"]

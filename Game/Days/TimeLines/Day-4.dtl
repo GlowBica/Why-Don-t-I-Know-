@@ -14,9 +14,9 @@ label Station
 - Go to Property Room | [if {Days.5.Property} == false]
 	[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
 	[wait time="1.0"]
-	[background arg="res://Game/Art/Backgrounds/evidence_room.png" fade="0.0"]
 	set {Days.5.Property} = true
 	label PropertyRoom
+	[background arg="res://Game/Art/Backgrounds/evidence_room.png" fade="0.5"]
 	- Bloody Knife | [if {Days.5.Knife} == false]
 		set {Days.5.Knife} = true
 		[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
@@ -25,6 +25,18 @@ label Station
 		Mallory: “I don’t recognize this knife at all…”
 		Mallory: “...”
 		Mallory: “My headache…”
+		jump PropertyRoom
+	
+	- CCTV-1 | [if {Days.5.CCTV1} == false] [Evidence.CCTV-1="true"]
+		set {Days.5.CCTV1} = true
+		[background arg="res://Game/Art/Evidences/CCTV-1.png" fade="0.0"]
+		Mallory: “CCTV-1?”
+		Mallory: “Synopsis…”
+		Mallory: “It's a recording of me helping the OldLady from the plaza.”
+		Mallory: “It was 30 minutes before the murder happened.”
+		Mallory: “If I was walking, it would've taken me around 20 minutes to get there.”
+		Mallory: “Which means I would’ve had 10 minutes to commit… the murder…”
+		Mallory: “Ugh…. My headache is getting worse…”
 		jump PropertyRoom
 	
 	- Hair Sample | [if {Days.5.Hair} == false]
@@ -45,7 +57,7 @@ label Station
 		Mallory: “But that wouldn’t make sense, because the victim and I were the only ones found at his house.”
 		Mallory: “I guess I was holding onto it.”
 		jump PropertyRoom
-	- Bloody Clothes | [if {Days.5.BC} == true] [Evidence.BC="false"]
+	- Bloody Clothes | [if {Days.5.BC} == false] [Evidence.BC="true"]
 		set {Days.5.BC} = true
 		[background arg="res://Game/Art/Evidences/BloodyClothes.png" fade="0.0"]
 		Mallory: “It’s the clothes I found at the plaza.”
@@ -53,8 +65,10 @@ label Station
 		Mallory: “They’re still trying to figure out who these clothes belong to, and who the blood belongs to.”
 		Mallory: “...”
 		jump PropertyRoom
-	- CCTV-2 | [if {Days.5.CCTV-2} == true] [Evidence.CCTV-2="false"]
-		set {Days.5.CCTV} = true
+	
+	- CCTV-2 | [if {Days.5.CCTV2} == false] [Evidence.CCTV-2="true"]
+		set {Days.5.CCTV2} = true
+		[background arg="res://Game/Art/Evidences/CCTV-2.png" fade="0.0"]
 		Mallory: “CCTV-2…”
 		Mallory: “Synopsis…”
 		Mallory: “It's a recording of Dolion and Dad near the plaza an hour later of the murder.”
@@ -68,7 +82,7 @@ label Station
 - Go to Morgue | [if {Days.5.Morgue} == false]
 	[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
 	[wait time="1.0"]
-	[background arg="res://Game/Art/Backgrounds/morgue.png" fade="0.0"]
+	[background arg="res://Game/Art/Backgrounds/morgue.png" fade="0.5"]
 	set {Days.5.Morgue} = true
 	label Morgue
 	Mallory: “It smells like a hospital here.”
@@ -92,7 +106,7 @@ label Station
 	label Interrogation
 	[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
 	[wait time="1.0"]
-	[background arg="res://Game/Art/Backgrounds/police_station.png" fade="0.0"]
+	[background arg="res://Game/Art/Backgrounds/police_station.png" fade="0.5"]
 	join PoliceOfficer right
 	PoliceOfficer (Neutral): “Hello, Mallory. It’s good to see you again.”
 	Mallory: “Hi.”
@@ -156,11 +170,7 @@ label Station
 		PoliceOfficer: “Remember that your trial is taking place in 3 days.”
 		PoliceOfficer: “You can leave now.”
 		Mallory: “Okay…”
-		leave --All--
-		[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
-		[wait time="2.0"]
-		[save slot="1"]
-		jump Day-5/
+		jump Day-4/end
 	- "I don't think I can help you."
 		PoliceOfficer (Neutral): …
 		PoliceOfficer (Mad): “I don’t see what choice you have.”
@@ -183,11 +193,7 @@ label Station
 			Mallory: “...”
 			PoliceOfficer (Neutral): “You can leave now.”
 			Mallory: “Okay…”
-			leave --All--
-			[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
-			[wait time="2.0"]
-			[save slot="1"]
-			jump Day-5/
+			jump Day-4/end
 		- "I don’t want that. I want to help you."
 			PoliceOfficer (Sus): “Then if you have anything that could help me help you, tell me.”
 			PoliceOfficer: “Or at least tell Private Investigator Manuel, please.”
@@ -196,8 +202,9 @@ label Station
 			PoliceOfficer: “Remember that your trial is taking place in 3 days.”
 			PoliceOfficer: “You can leave now.”
 			Mallory: “Okay…”
+			label end
 			leave --All--
 			[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
 			[wait time="2.0"]
-			[save slot="1"]
+			[save slot=""]
 			jump Day-5/

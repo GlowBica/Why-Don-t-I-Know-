@@ -1,9 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1axxudpvaikp"]
+[gd_scene load_steps=3 format=3 uid="uid://b1axxudpvaikp"]
 
+[ext_resource type="PackedScene" uid="uid://bprmu0iiohg5u" path="res://Game/Days/Scenes/pause_menu.tscn" id="2_psguh"]
 [ext_resource type="PackedScene" uid="uid://dngldmvwfhybt" path="res://Game/Days/Scenes/day_1.tscn" id="13_8agew"]
 
 [node name="Days" type="Node2D"]
 
 [node name="Day-1" parent="." instance=ExtResource("13_8agew")]
 
-[node name="Save" type="Node2D" parent="."]
+[node name="PauseMenu" parent="." instance=ExtResource("2_psguh")]

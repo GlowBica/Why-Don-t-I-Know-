@@ -131,7 +131,7 @@ label Different Questions
 		Dolion (Happy): “Maybe you didn’t kill him at allllll…..”
 		Dolion (Neutral): “...”
 		Dolion (Happy-Teeth): “My turnnnnnn!!!!!!”
-		jump Dolion’s Turn
+		jump Dolions Turn
 	- “Was I the type to dislike people I don’t know?”
 		jump HowIKnow?
 	- “Am I really secretive?”
@@ -147,7 +147,7 @@ label Different Questions
 	Dolion: “So whether you did it or not doesn’t matter…”
 	Dolion (Neutral): *hiccup*
 	Dolion (Happy-Teeth): “My turnnnnnnn!!!!!”
-	jump Dolion’s Turn
+	jump Dolions Turn
 - “Do you know who sent the bloody Mexican letter?” | [if {Evidence.Letter} == true]
 	Dolion (Annoyed): “Didn’t I say to notttt….”
 	Dolion: “Talk about this…?”
@@ -201,7 +201,7 @@ label Different Questions
 		Dolion (Neutral): “I knoooow what you meant!”
 		Dolion (Angry): “You’re IMPLYING that I *hiccup* have something to do with YOUR victim’s death!”
 		jump Not What I Meant-2
-- “Why were you at the plaza near the victim’s house that night?” | [if {Evidence.CCTV-2} == true]
+- “Why were you at the plaza near the victim’s house that night?” | [if {Evidence.CCTV2} == true]
 	Dolion (Happy): “Whaaaat?”
 	Mallory: “I saw a *hiccup* recording of you and Dad near the plaza that’s, uhm…”
 	Mallory: “What was I saying?...”
@@ -303,9 +303,9 @@ Dolion (Annoyed): “Not like you, you always act like some little princess that
 Dolion (Neutral): “I have such an idiot for a twin.”
 Mallory: “...”
 - Blow up
-	if {Evidence.Fam-Doc} == true:
+	if {Evidence.FamDoc} == true:
 		jump Confront-1
-	if {Evidence.Fam-Doc} == false:
+	if {Evidence.FamDoc} == false:
 		jump Confront-2
 - Hold it in
 	Mallory: “You know what?”
@@ -406,7 +406,7 @@ Dolion (Annoyed): “Whether you’re found guilty tomorrow…”
 Dolion: “I hope you know that I don't care.”
 Dolion (Upset): “Bye, Mallory.”
 - “...”
-jump end
+	jump end
 
 
 label Confront-2
@@ -477,5 +477,5 @@ label end
 leave --All--
 [background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
 [wait time="2.0"]
-[save slot="1"]
+[save slot=""]
 jump Day-7/

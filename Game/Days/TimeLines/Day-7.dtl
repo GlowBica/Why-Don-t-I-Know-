@@ -285,7 +285,10 @@ Judge: “Please proceed.”
 leave Morgan [animation="Instant Out"]
 join Mallory (Neutral) right [animation="Instant In"]
 Mallory (Thinking): “Yes, Your Honor”
-- “There is a discrepancy on how the blood got onto my clothes.”
+label Evidences
+- “There is a discrepancy on how the blood got onto my clothes.” | [if {Days.7.Clicked.Discrepancy} == false]
+	label Discrepancy
+	set {Days.7.Clicked.Discrepancy} = true
 	Mallory: “There is a significant height difference between Mr. Norwood and I.”
 	Mallory: “How is it possible for Mr. Norwood’s blood, which is coming from the slit of his neck, to get onto my clothes?”
 	Mallory (Neutral): “I’d like to redirect the court’s attention to the Prosecution Exhibit 9 and 10 which is already in evidence.”
@@ -304,51 +307,12 @@ Mallory (Thinking): “Yes, Your Honor”
 	Judge: “Ms. Castillo, you may now address the prosecution's objections and continue your argument.”
 	leave Morgan [animation="Instant Out"]
 	join Mallory (Neutral) right [animation="Instant In"]
-	- “I-I have no further evidence to present…” | [if {Evidence.BC} == false] [Evidence.CCTV-2="false" Evidence.Fam-Doc="false" Evidence.Lighter="false" Days.7.NoFurther="false"]
-		set {Days.7.NoFurther} = true
-		label No Further Evidence
-		Judge: “...”
-		Judge: “Ladies and gentlemen of the jury, you have heard all the evidence and arguments from both sides.”
-		Judge: “You must deliberate carefully and impartially to reach a verdict.”
-		Judge: “This court will now recess while the jury comes to a decision.”
-		leave Mallory
-		[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
-		[style name="NoName"]
-		…
-		Hours passed, but it felt like days to Mallory…
-		She couldn’t escape the weight of people's stares and whispers…
-		…
-		[background arg="res://Game/Art/Backgrounds/courtroom.png" fade="0.0"]
-		[style name="Style"]
-		join Mallory (Concerned) right
-		Judge: “Will the jury foreperson please rise and read the verdict.”
-		Foreperson: “Yes, Your Honor.”
-		Foreperson: “The jury, unanimously, finds Mallory Castillo… ”
-		Foreperson: “Guilty of murder in the first degree…”
-		update Mallory (Thinking)
-		Judge: “Ms. Castillo, the jury has found you guilty in the first degree.”
-		update Mallory (Sad)
-		Judge: “Taking into account the evidence presented and the jury’s decision, I hereby sentence you to life imprisonment without the possibility of parole.”
-		Mallory (Thinking): “What?!”
-		Judge: “This court is now adjourned.”
-		Mallory (Sad): “No…”
-		Mallory: "This can't be happening..."
-		Mallory: "This isn't fair...."
-		[wait time="1.0"]
-		[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
-		[wait time="2.0"]
-		[end_timeline]
-	- CCTV-2 | [if {Evidence.CCTV-2} == true]
-		jump CCTV-2
-	- Bloody Clothes | [if {Evidence.BC} == true]
-		jump BC
-	- Lighter | [if {Evidence.Lighter} == true]
-		jump Lighter
-	- Incriminating Family Evidence | [if {Evidence.Fam-Doc} == true]
-		jump FamilyEvidence
+	jump Evidences
 
 - Bloody Clothes | [if {Evidence.BC} == true]
 	label BC
+	set {Days.7.Clicked.BC} = true
+	set {Evidence.BC} = false
 	Mallory (Neutral): “Your Honor, I’d like to redirect the court’s attention to Prosecution Exhibit 11 which is already in evidence.”
 	Mallory (Thinking): “These are pictures of clothes that were found in the plaza near the victims house.”
 	Mallory: “These clothes were found in a trash can, damp, and slightly burnt.”
@@ -365,38 +329,15 @@ Mallory (Thinking): “Yes, Your Honor”
 	Judge: “Ms. Castillo, how will you refute that claim?”
 	leave Morgan [animation="Instant Out"]
 	join Mallory (Neutral) right [animation="Instant In"]
-	- “I-I have no further evidence to present… but…” | [if {Evidence.CCTV-2} == false] [ Evidence.Fam-Doc="false" Evidence.Lighter="false" Days.7.NoFurther="false"]
-		set {Days.7.NoFurther} = true
-		Mallory (Thinking): “Your Honor, this isn’t speculation; it’s a logical conclusion!”
-		Mallory: “These clothes were covered in Mr. Norwood’s blood and thrown away in such a suspicious manner, proves that someone else was involved!”
-		jump WrapUp
-	- Lighter | [if {Evidence.Lighter} == true]
-		jump Lighter-WrapUP
-	- CCTV-2 | [if {Evidence.CCTV-2} == true]
-		label CCTV-2-WrapUp
-		Mallory (Neutral): “Your Honor, I’d like to redirect the court’s attention to Prosecution Exhibit 12 which is already in evidence.”
-		Mallory (Thinking): “This is… the surveillance footage from another store from the plaza near the victims house.”
-		Mallory: “As detailed in the documentation, my father and twin were seen in that area about an hour after the victim’s estimated time of death.”
-		Mallory (Neutral): “According to the documentation, they walked into the plaza and walked out of the plaza in different outfits.”
-		Mallory: “This proves that they were in the area near the time of the murder!”
-		leave Mallory [animation="Instant Out"]
-		join Morgan (Neutral) left [animation="Instant In"]
-		Morgan (Think): “Objection, Your Honor!”
-		Morgan: “The defendant is misleading the evidence right now!”
-		Morgan: “Just because the defendant’s family is seen near the area, and going into a space where there are clothing stores, and walking out with different clothing, doesn’t mean they were involved!”
-		Morgan (Neutral): “If anything, this shows that they were working together, mostly since her family also has a large motive against Mr. Norwood!”
-		Judge: “...”
-		Judge: “Sustained.”
-		Judge: “Ms. Castillo, how will you refute that claim?”
-		leave Morgan [animation="Instant Out"]
-		join Mallory (Neutral) right [animation="Instant In"]
-		Mallory (Thinking): “Your Honor, this footage is significant because it highlights the suspicious behavior of my father and twin.”
-		Mallory: “Why would my father and twin, who claim no involvement, feel the need to go to a plaza, near the area where someone that is investigating them lives, and change their clothes at around 9\:45 PM?”
-		Mallory (Neutral): “This aligns with someone trying to conceal their presence or actions. It doesn’t prove my guilt—it raises questions about theirs."
-		jump WrapUp
+	Mallory (Thinking): “Your Honor, this isn’t speculation; it’s a logical conclusion!”
+	Mallory: “These clothes were covered in Mr. Norwood’s blood and thrown away in such a suspicious manner, proves that someone else was involved!”
+	jump Evidences
 
-- CCTV-2 | [if {Evidence.CCTV-2} == true]
+
+- CCTV-2 | [if {Evidence.CCTV2} == true] [else="hide"]
 	label CCTV-2
+	set {Evidence.CCTV2} = false
+	set {Days.7.Clicked.CCTV2} = true
 	Mallory (Neutral): “Your Honor, I’d like to redirect the court’s attention to Prosecution Exhibit 12 which is already in evidence.”
 	Mallory (Thinking): “This is… the surveillance footage from another store from the plaza near the victims house.”
 	Mallory: “As detailed in the documentation, my father and twin were seen in that area about an hour after the victim’s estimated time of death.”
@@ -413,61 +354,16 @@ Mallory (Thinking): “Yes, Your Honor”
 	Judge: “Ms. Castillo, how will you refute that claim?”
 	leave Morgan [animation="Instant Out"]
 	join Mallory (Neutral) right [animation="Instant In"]
-	- “I-I have no further evidence to present… but…” | [if {Evidence.BC} == false] [Evidence.CCTV-2="false" Evidence.Fam-Doc="false" Evidence.Lighter="false" Days.7.NoFurther="false"]
-		set {Days.7.NoFurther} = true
-		Mallory (Concerned): “Why would my father and twin, who claim no involvement, feel the need to go to a plaza, near the area where someone that is investigating them lives, and change their clothes at around 9\:45 PM?”
-		Mallory (Thinking): “This aligns with someone trying to conceal their presence or actions. It doesn’t prove my guilt—it raises questions about theirs."
-		jump WrapUp
-	- Bloody Clothes
-		label BC-WrapUp
-		Mallory: “Your Honor, I’d like to redirect the court’s attention to Prosecution Exhibit 11 which is already in evidence.”
-		Mallory (Thinking): “These are pictures of clothes that were found in the plaza near the victims house.”
-		Mallory: “These clothes were found in a trash can, damp, and slightly burnt.”
-		Mallory: “The clothes are stained with streaks of blood, and as seen in these documents, the blood belongs to the victim!”
-		Mallory (Neutral): “How can I be the culprit, if the blood of the victim can also be found at least 20 minutes away walking from the crime scene?”
-		leave Mallory [animation="Instant Out"]
-		join Morgan (Neutral) left [animation="Instant In"]
-		Morgan (Think): “Objection, Your Honor!”
-		Morgan: “The defendant is speculating right now!”
-		Morgan: “Just because the blood of the victim is found outside the crime scene does not prove the defendant’s innocence!”
-		Morgan (Neutral): “This just shows that she wasn’t working alone!”
-		Judge: “...”
-		Judge: “Sustained.”
-		leave Morgan [animation="Instant Out"]
-		join Mallory (Neutral) right [animation="Instant In"]
-		Judge: “Ms. Castillo, how will you refute that claim?”
-	- “I-I have no further evidence to present… but…” | [if {Evidence.BC} == false] [Evidence.CCTV-2="false" Evidence.Fam-Doc="false" Evidence.Lighter="false" Days.7.NoFurther="false"]
-		set {Days.7.NoFurther} = true
-		Mallory (Thinking): “Your Honor, this isn’t speculation; it’s a logical conclusion!”
-		Mallory (Neutral): “These clothes were covered in Mr. Norwood’s blood, thrown away in such a suspicious manner, proves that someone else was involved!”
-		jump WrapUp
-	- Lighter
-		label Lighter-WrapUp
-		Mallory (Thinking): “Your Honor, I’d like to redirect the court’s attention to Prosecution Exhibit 13 which is already in evidence.”
-		Mallory (Concerned): “This is my twin’s lighter.”
-		Mallory (Thinking): “Her fingerprints and initials can be found on the lighter.”
-		Mallory (Neutral): “This lighter was found at the victims house, inside the kitchen, close to the broken door!”
-		Mallory (Thinking): “This shows that someone with bigger feet than mine, kicked Mr. Norwood’s back door open, and my twin’s lighter must've been in their possession.”
-		Mallory: “After breaking in, the lighter must have slipped out.”
-		leave Mallory [animation="Instant Out"]
-		join Morgan (Neutral) left [animation="Instant In"]
-		Morgan (Think): “Your Honor, I respectfully request that the defendant clarify their interpretation of the evidence, as it seems to be misleading the court.”
-		Morgan (Neutral): “How can the defendant confidently say she wasn’t the one to have had Dolion Castillo’s lighter?”
-		Morgan (Think): “This just shows that she was working with her family, and they left her once they realized the police were going to show up at the crime scene!”
-		Judge: “...”
-		Judge: “Sustained.”
-		Judge: “Ms. Castillo, how will you refute that claim?”
-		leave Morgan [animation="Instant Out"]
-		join Mallory (Neutral) right [animation="Instant In"]
-		Mallory: "Your Honor, with all due respect, I was unconscious when the police found me.”
-		Mallory (Thinking): “If I had my twin’s lighter, it wouldn’t have been in the kitchen—it would have been on me.”
-		Mallory: “The difference in shoe size evidently demonstrates that I wasn’t the one to kick the door open!”
-		Mallory: “This lighter being near the broken door proves that someone else was in the house before me, and that someone is the real perpetrator!"
-		jump WrapUp
+	Mallory (Concerned): “Why would my father and twin, who claim no involvement, feel the need to go to a plaza, near the area where someone that is investigating them lives, and change their clothes at around 9\:45 PM?”
+	Mallory (Thinking): “This aligns with someone trying to conceal their presence or actions. It doesn’t prove my guilt—it raises questions about theirs."
+	Mallory: "Also..."
+	jump Evidences
 
 
 - Lighter | [if {Evidence.Lighter} == true]
 	label Lighter
+	set {Evidence.Lighter} = false
+	set {Days.7.Clicked.Lighter} = true
 	Mallory: “Your Honor, I’d like to redirect the court’s attention to Prosecution Exhibit 13 which is already in evidence.”
 	Mallory (Concerned): “This is my twin’s lighter.”
 	Mallory (Thinking): “Her fingerprints and initials can be found on the lighter.”
@@ -484,19 +380,16 @@ Mallory (Thinking): “Yes, Your Honor”
 	Judge: “Ms. Castillo, how will you refute that claim?”
 	leave Morgan [animation="Instant Out"]
 	join Mallory (Neutral) right [animation="Instant In"]
-	- “I-I have no further evidence to present… but…” | [if {Evidence.BC} == false] [Evidence.CCTV-2="false" Evidence.Fam-Doc="false" Evidence.Lighter="false" Days.7.NoFurther="false"]
-		set {Days.7.NoFurther} = true
-		Mallory (Neutral): "Your Honor, with all due respect, I was unconscious when the police found me.”
-		Mallory (Thinking): “If I had my twin’s lighter, it wouldn’t have been in the kitchen—it would have been on me.”
-		Mallory: “The difference in shoe size evidently demonstrates that I wasn’t the one to kick the door open!”
-		Mallory: “This lighter being near the broken door proves that someone else was in the house before me, and that someone is the real perpetrator!"
-		jump WrapUp
-	- CCTV-2
-		jump CCTV-2-Wrap-Up
-	- Bloody Clothes
-		jump BC-WrapUp
+	Mallory (Neutral): "Your Honor, with all due respect, I was unconscious when the police found me.”
+	Mallory (Thinking): “If I had my twin’s lighter, it wouldn’t have been in the kitchen—it would have been on me.”
+	Mallory: “The difference in shoe size evidently demonstrates that I wasn’t the one to kick the door open!”
+	Mallory: “This lighter being near the broken door proves that someone else was in the house before me, and that someone is the real perpetrator!"
+	Mallory: "Also..."
+	jump Evidences
 
-- Present incriminating family evidence | [if {Evidence.Fam-Doc} == true]
+- Present incriminating family evidence | [if {Evidence.FamDoc} == true]
+	set {Evidence.FamDoc} = false
+	set {Days.7.Clicked.FamDoc} = true
 	label FamilyEvidence
 	Mallory (Concerned): “I would like to present new evidence.”
 	Mallory: “These are photographs I took 2 days ago demonstrating the link between my family and certain drug lords from Mexico…”
@@ -519,17 +412,11 @@ Mallory (Thinking): “Yes, Your Honor”
 	Judge: “Ms. Castillo’s evidence directly relates to the alleged crimes against her and it could have significant bearing on the truth.”
 	Judge: “Therefore, the court will allow it.”
 	Judge: “Ms. Castillo, any other evidence you want us to look at?”
-	- “I-I have no further evidence to present…” | [if {Evidence.BC} == false] [Evidence.CCTV-2="false" Evidence.Fam-Doc="false" Evidence.Lighter="false" Days.7.NoFurther="false"]
-		set {Days.7.NoFurther} = true
-		jump No Further Evidence
-	- CCTV-2 | [if {Evidence.CCTV-2} == true]
-		jump CCTV-2
-	- Bloody Clothes | [if {Evidence.BC} == true]
-		jump BC
-	- Lighter | [if {Evidence.Lighter} == true]
-		jump Lighter
-	- Incriminating Family Evidence | [if {Evidence.Fam-Doc} == true]
-		jump FamilyEvidence
+	jump Evidences
+
+- “I have  no further evidence to present…” | [if {Days.7.Clicked.Discrepancy} == true]
+	jump WrapUp
+
 
 label WrapUp
 Judge: “Thank you, Ms. Castillo.”
@@ -599,8 +486,8 @@ label Final
 		Mallory: “If he was dying, why would that trail lead to my unconscious body?”
 		Mallory: "Also..."
 		jump Final
-	- “There were other clothes also stained with the victim’s blood…” | [if {Evidence.BC} == true]
-		set {Days.2.Years.7} += 2
+	- “There were other clothes also stained with the victim’s blood…” | [if {Days.7.Clicked.BC} == true]
+		set {Days.7.Persuasion} += 2
 		Mallory (Thinking): “That was found at the plaza, burnt and wet!”
 		Mallory: “These clothes were stained by the streaks of the victim's blood!”
 		Mallory: "Also..."
@@ -612,7 +499,6 @@ label Final
 	- “The foot size doesn’t match my own.”
 		set {Days.7.Persuasion} += 1
 		Mallory: “It doesn’t make sense for me to kick down someone’s door with shoes that are too big to fit me.”
-		label K-BC-FP
 		Mallory: “Also…”
 		jump Final
 	- “I don’t have the strength to kick down a door.”
@@ -631,17 +517,19 @@ label Final
 	label Family-Past Multi-Choice
 	Mallory: “Has nothing to do with me.”
 	Mallory: “The investigator was after my father and twin, not me”
-	- “They were seen in the plaza…” | [if {Evidence.CCTV-2} == true]
+	- “They were seen in the plaza…” | [if {Days.7.Clicked.CCTV2} == true]
 		set {Days.7.Persuasion} += 2
 		Mallory (Thinking): “If they killed the victim, they  would've had 40 minutes to get rid of any evidence linking to them.”
 		Mallory: "Also..."
 		jump Final
-	- “My twin's lighter was found in the victim's house…”
+	- “My twin's lighter was found in the victim's house…” | [if {Days.7.Clicked.Lighter} == true]
 		set {Days.7.Persuasion} -= 1
 		Mallory (Neutral): “In the kitchen near the back door.”
-		label K-BC-BB
 		Mallory: “Also…”
 		jump Final
+	- "Also..."
+		jump Final
+
 - "I'm done with my statement..." | [if {Days.7.Knife} == true] [Days.7.Family="true" Days.7.Clothes="true" Days.7.Door="true"]
 	jump End
 
@@ -667,67 +555,62 @@ Foreperson: “The jury, unanimously, finds Mallory Castillo… ”
 if {Days.7.Persuasion} <= 2:
 	label Bad-End
 	Foreperson: “Guilty of murder in the first degree…”
+	update Mallory (Thinking)
 	Judge: “Ms. Castillo, the jury has found you guilty in the first degree.”
+	update Mallory (Sad)
 	Judge: “Taking into account the evidence presented and the jury’s decision, I hereby sentence you to life imprisonment without the possibility of parole.”
-	Mallory: “What?!”
+	Mallory (Concerned): “What?!”
 	Judge: “This court is now adjourned.”
-	Mallory: “No…”
-	…
-elif {Days.7.Persuasion} <= 3:
-	label Mid-End
-	Foreperson: “The jury, unanimously, finds Mallory Castillo… ”
-	Foreperson: “Guilty of murder in the first degree…”
-	Judge: “Ms. Castillo, the jury has found you guilty in the first degree.”
-	Judge: “Security, restrain Mr. Castillo and Ms. Dolion Castillo immediately!”
-	join Dad leftmost
-	join Dolion left
-	Dad (Angry): “What?!”
-	Dolion (Angry): “Shit!”
-	Judge: “Taking into account the evidence presented and the jury’s decision, I hereby sentence you, Mallory Castillo, to life imprisonment without the possibility of parole.”
-	Mallory (Concerned): “Your Honor, please! I didn’t do this - this isn’t justice!”
-	Dolion (Annoyed): “You’re the one who dragged us into this mess!”
-	Mallory (Angry): “I was trying to prove the truth, Dolion! You and Dad were at the scene—why won’t you just admit it?!”
-	Judge: “Order in the court!”
-	Judge: “Ms. Castillo, you have been found guilty by the jury based on the evidence presented.”
-	Judge: “However…”
-	Judge: “This court cannot ignore the additional evidence brought to light during this trial.”
-	Judge: “Mr. Castillo and Ms. Dolion Castillo’s involvement is too much to overlook as coincidence."
-	Judge: “Therefore, while I am sentencing Mallory Castillo to life imprisonment without the possibility of parole…”
-	Judge: “I am also ordering that Mr. Castillo and Ms. Dolion Castillo be remanded into custody immediately and face trial for their potential involvement in this crime!”
-	Mallory (Sad): “No! Your Honor, please! I didn’t kill him, I swear! I just wanted the truth!”
-	Dolion (Upset): “This is insane! You have no proof against me!”
-	Dad (Sad): “Your Honor, I demand a fair trial - this is a mistake!“
-	Judge: “You will have your day in court, Mr. Castillo. Until then, you will remain in custody. This court is now adjourned.”
-	Mallory (Sad): “The truth will come out. It has to…”
-	[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+	update Mallory (Sad)
+	Judge: “Taking into account the evidence presented and the jury’s decision, I hereby sentence you to life imprisonment without the possibility of parole.”
+	Mallory (Sad): “No…”
 	[wait time="1.0"]
+	leave --All--
+	[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
+	Mallory: "This can't be happening..."
+	[wait time="1.0"]
+	Mallory: "This isn't fair...."
+	[wait time="1.0"]
+	[background arg="res://Game/Art/Backgrounds/Titles/Worst Ending.png" fade="0.5"]
+	[wait time="4.0"]
 	[end_timeline]
-
 elif {Days.7.Persuasion} >= 4:
 	label Good-End
-	Foreperson: “The jury, unanimously, finds Mallory Castillo… ”
 	Foreperson: “Not Guilty...”
+	update Mallory (Thinking)
 	Judge: “Ms. Castillo, the jury has found you not guilty.”
+	update Mallory (Happy)
 	Judge: “Security, restrain Mr. Castillo and Ms. Dolion Castillo immediately!”
-	join Dad center
-	join Dolion center
+	leave Mallory [animation="Instant Out" length="0.0"]
+	join Dad (Annoyed) right [animation="Instant In" length="0.0"]
+	join Dolion (Annoyed) left [animation="Instant In" length="0.0"]
 	Dad (Angry): “What?!”
 	Dolion (Angry): “Shit!”
+	leave --All-- [animation="Instant Out" length="0.0"]
+	join Mallory (Happy) right [animation="Instant In" length="0.0"]
 	Judge: “Ms. Castillo you are free to leave. This court finds you innocent of the charges brought against you."
+	update Mallory (SuperHappy) right
 	Judge: “However…”
+	leave --All-- [animation="Instant Out" length="0.0"]
 	Judge: “This court cannot ignore the additional evidence brought to light during this trial.”
 	Judge: “Mr. Castillo and Ms. Dolion Castillo’s involvement is too much to overlook as coincidence."
 	Judge: “Therefore, while I am sentencing Mallory Castillo is free…”
+	join Dad (Annoyed) left [animation="Instant In" length="0.0"]
+	join Dolion (Annoyed) right [animation="Instant In" length="0.0"]
 	Judge: “I am ordering that Mr. Castillo and Ms. Dolion Castillo be remanded into custody immediately and face trial for their potential involvement in this crime!”
 	Dolion (Angry): “This is insane! You have no proof against me!”
 	Dad (Angry): “Your Honor, I demand a fair trial - this is a mistake!“
 	Judge: “You will have your day in court, Mr. Castillo.”
 	Judge: “Until then, you will remain in custody. This court is now adjourned.”
+	leave --All--
+	join Mallory (Thinking) center
 	Mallory (Neutral): “...”
+	[wait time="2.0"]
 	Mallory (Thinking): “I’m…Free…”
 	Mallory (SuperHappy): “I’m free!”
 	[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
-	[wait time="1.0"]
+	leave --All-- [animation="Instant Out" length="0.0"]
+	[wait time="2.0"]
 	Mallory: "I finally remember everything..."
 	Mallory: "Dad and Dolion had beeacting really strange for a few weeks, and going out late at night often. "
 	Mallory: "I found it strange that they never told me where they were going to, and why...."
@@ -736,10 +619,57 @@ elif {Days.7.Persuasion} >= 4:
 	join Dolion (Angry-Bloody) center [animation="Fade In" length="1.0"]
 	Mallory: "I told her to turn herself in, but Dad yelled that the cops were on their way, and I tried to stop her from leaving..."
 	Mallory: "But Dolion pushed me off the stairs, knife in hand, which explains why my hair was found there..."
-	leave Dolion [animation="Fade Out" 1.0]
+	leave Dolion [animation="Fade Out"]
 	Mallory: "I lost consciousness at that point, so I can only assume they smeared Elian's blood on me, and put the knife in my hand..."
 	[wait time="2.0"]
+	leave --All--
 	[background arg="res://Game/Art/Backgrounds/Titles/BestEnding.png" fade="1.0"]
 	[wait time="4.0"]
-	[background scene="res://Game/Days/Scenes/game.tscn" fade="0.0"]
+	[end_timeline]
+else:
+	label Mid-End
+	Foreperson: “Guilty of murder in the first degree…”
+	Judge: “Ms. Castillo, the jury has found you guilty in the first degree.”
+	Judge: “Security, restrain Mr. Castillo and Ms. Dolion Castillo immediately!”
+	leave Mallory [animation="Instant Out" length="0.0"]
+	join Dad left [animation="Instant In" length="0.0"]
+	join Dolion right [animation="Instant In" length="0.0"]
+	Dad (Angry): “What?!”
+	Dolion (Angry): “Shit!”
+	Judge: “Taking into account the evidence presented and the jury’s decision, I hereby sentence you, Mallory Castillo, to life imprisonment without the possibility of parole.”
+	leave --All-- [animation="Instant Out" length="0.0"]
+	join Mallory (Concerned) right [animation="Instant In" length="0.0"]
+	Mallory (Concerned): “Your Honor, please! I didn’t do this - this isn’t justice!”
+	leave Mallory [animation="Instant Out" length="0.0"]
+	join Dolion (Angry) right [animation="Instant In" length="0.0"]
+	join Dad (Sad) left [animation="Instant In" length="0.0"]
+	Dolion (Annoyed): “You’re the one who dragged us into this mess!”
+	leave --All-- [animation="Instant Out" length="0.0"]
+	join Mallory right [animation="Instant In" length="0.0"]
+	Mallory (Angry): “I was trying to prove the truth, Dolion! You and Dad were at the scene—why won’t you just admit it?!”
+	Judge: “Order in the court!”
+	Judge: “Ms. Castillo, you have been found guilty by the jury based on the evidence presented.”
+	update Mallory (Concerned)
+	Judge: “However…”
+	Judge: “This court cannot ignore the additional evidence brought to light during this trial.”
+	update Mallory (Thinking)
+	Judge: “Mr. Castillo and Ms. Dolion Castillo’s involvement is too much to overlook as coincidence."
+	Judge: “Therefore, while I am sentencing Mallory Castillo to life imprisonment without the possibility of parole…”
+	update Mallory (Concerned)
+	Judge: “I am also ordering that Mr. Castillo and Ms. Dolion Castillo be remanded into custody immediately and face trial for their potential involvement in this crime!”
+	Mallory (Sad): “No! Your Honor, please! I didn’t kill him, I swear! I just wanted the truth!”
+	leave --All-- [animation="Instant Out" length="0.0"]
+	join Dad (Annoyed) left [animation="Instant In" length="0.0"]
+	join Dolion (Annoyed) right [animation="Instant In" length="0.0"]
+	Dolion (Angry): “This is insane! You have no proof against me!”
+	Dad (Angry): “Your Honor, I demand a fair trial - this is a mistake!“
+	Judge: “You will have your day in court, Mr. Castillo. Until then, you will remain in custody. This court is now adjourned.”
+	leave --All-- [animation="Instant Out" length="0.0"]
+	[wait time="1.0"]
+	[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.5"]
+	Mallory (Sad): “The truth will come out...”
+	[wait time="1.0"]
+	Mallory: "It has to..."
+	[background arg="res://Game/Art/Backgrounds/Titles/Okay Ending.png" fade="1.0"]
+	[wait time="4.0"]
 	[end_timeline]

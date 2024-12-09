@@ -1,0 +1,104 @@
+[gd_scene load_steps=16 format=3 uid="uid://bprmu0iiohg5u"]
+
+[ext_resource type="Script" path="res://Game/Days/Scripts/pause_menu.gd" id="1_2aqyq"]
+[ext_resource type="Shader" path="res://Game/Days/Scenes/pause_menu.gdshader" id="2_n25vw"]
+[ext_resource type="Texture2D" uid="uid://rwhju12v1jna" path="res://Game/Art/Backgrounds/Titles/BlackPause.png" id="3_f8f1r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k7o8q"]
+shader = ExtResource("2_n25vw")
+shader_parameter/amount = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w2xdg"]
+bg_color = Color(0.509804, 0.517647, 0.52549, 0.368627)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssgwv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_o2fms"]
+Button/styles/hover = SubResource("StyleBoxFlat_w2xdg")
+Button/styles/normal = SubResource("StyleBoxFlat_ssgwv")
+Button/styles/pressed = null
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uwq6k"]
+bg_color = Color(0.509804, 0.517647, 0.52549, 0.368627)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gf3t7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6xm2m"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_kywhm"]
+Button/styles/hover = SubResource("StyleBoxFlat_uwq6k")
+Button/styles/normal = SubResource("StyleBoxFlat_gf3t7")
+Button/styles/pressed = SubResource("StyleBoxFlat_6xm2m")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64i4q"]
+bg_color = Color(0.509804, 0.517647, 0.52549, 0.368627)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycv0h"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxnuj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_w7u0k"]
+Button/styles/hover = SubResource("StyleBoxFlat_64i4q")
+Button/styles/normal = SubResource("StyleBoxFlat_ycv0h")
+Button/styles/pressed = SubResource("StyleBoxFlat_mxnuj")
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2aqyq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_k7o8q")
+layout_mode = 0
+offset_left = 4.0
+offset_top = -6.0
+offset_right = 1924.0
+offset_bottom = 1074.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("3_f8f1r")
+
+[node name="resume" type="Button" parent="."]
+layout_mode = 0
+offset_left = 730.0
+offset_top = 280.0
+offset_right = 1180.0
+offset_bottom = 400.0
+theme = SubResource("Theme_o2fms")
+
+[node name="save" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -49.0
+offset_right = 225.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_kywhm")
+
+[node name="quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 739.0
+offset_top = 689.0
+offset_right = 1189.0
+offset_bottom = 809.0
+theme = SubResource("Theme_w7u0k")
+
+[connection signal="pressed" from="resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

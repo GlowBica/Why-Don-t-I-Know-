@@ -213,5 +213,5 @@ label end
 leave --All--
 [background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
 [wait time="2.0"]
-[save slot="1"]
+[save slot=""]
 jump Day-6/

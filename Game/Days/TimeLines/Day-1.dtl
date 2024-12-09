@@ -1,3 +1,4 @@
+[save slot=""]
 [background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="1.0"]
 [background arg="res://Game/Art/Backgrounds/hospital.png" fade="1.0"]
 Mallory: "Ugh..."
@@ -477,5 +478,5 @@ Mallory (Sad): “But I’m so tired…”
 leave Mallory
 [background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="2.0"]
 [wait time="2.0"]
-[save slot="1"]
+[save slot=""]
 jump Day-2/

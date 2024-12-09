@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://b6qhc17s8j7fv"]
 
-[ext_resource type="Script" path="res://Game/Days/Scenes/game.gd" id="1_41eh0"]
+[ext_resource type="Script" path="res://Game/Days/Scripts/game.gd" id="1_41eh0"]
 [ext_resource type="PackedScene" uid="uid://b1axxudpvaikp" path="res://Game/Days/Scenes/days.tscn" id="1_hjoys"]
 [ext_resource type="PackedScene" uid="uid://6f3aguxq6814" path="res://Game/Days/Scenes/title_screen.tscn" id="2_kyj02"]
 [ext_resource type="PackedScene" uid="uid://d2g51olbsyb5f" path="res://Game/Days/Scenes/disclaimer.tscn" id="3_rxswf"]
-[ext_resource type="PackedScene" uid="uid://crbwbjcpqk6ta" path="res://opening_screen.tscn" id="4_an8vy"]
+[ext_resource type="PackedScene" uid="uid://crbwbjcpqk6ta" path="res://Game/Days/Scenes/opening_screen.tscn" id="4_an8vy"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_41eh0")

@@ -1,33 +1,83 @@
-[gd_scene load_steps=4 format=3 uid="uid://6f3aguxq6814"]
+[gd_scene load_steps=16 format=3 uid="uid://6f3aguxq6814"]
 
 [ext_resource type="Script" path="res://Game/Days/Scripts/title_screen.gd" id="1_gjt65"]
-[ext_resource type="Texture2D" uid="uid://dna2n0tpusd6b" path="res://Game/Art/Backgrounds/Titles/Quit-TitleScreen.png" id="2_mscsr"]
+[ext_resource type="Texture2D" uid="uid://dubrvg35jnnww" path="res://Game/Art/Backgrounds/Titles/continue-quit.png" id="2_gjmog"]
 [ext_resource type="FontFile" uid="uid://co0p2qu0rtf5x" path="res://Game/Art/Layout/Fonts/cour.ttf" id="3_hpr3r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyw5i"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3aei"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_te0hs"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_d3q8e"]
+Button/styles/hover = SubResource("StyleBoxFlat_dyw5i")
+Button/styles/normal = SubResource("StyleBoxFlat_m3aei")
+Button/styles/pressed = SubResource("StyleBoxFlat_te0hs")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7r51"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdgor"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovj6u"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_erdme"]
+Button/styles/hover = SubResource("StyleBoxFlat_n7r51")
+Button/styles/normal = SubResource("StyleBoxFlat_cdgor")
+Button/styles/pressed = SubResource("StyleBoxFlat_ovj6u")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s8xpq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eid7r"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uiny6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_txsjm"]
+Button/styles/hover = SubResource("StyleBoxFlat_s8xpq")
+Button/styles/normal = SubResource("StyleBoxFlat_eid7r")
+Button/styles/pressed = SubResource("StyleBoxFlat_uiny6")
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_gjt65")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
-texture = ExtResource("2_mscsr")
+texture = ExtResource("2_gjmog")
 
 [node name="PLAY" type="Button" parent="."]
-offset_left = 754.0
-offset_top = 558.0
-offset_right = 1167.0
-offset_bottom = 679.0
+offset_left = 742.0
+offset_top = 565.0
+offset_right = 1187.0
+offset_bottom = 694.0
+theme = SubResource("Theme_d3q8e")
 theme_override_fonts/font = ExtResource("3_hpr3r")
 theme_override_font_sizes/font_size = 83
-text = "play"
+
+[node name="CONTINUE" type="Button" parent="."]
+offset_left = 764.0
+offset_top = 726.0
+offset_right = 1196.0
+offset_bottom = 850.0
+theme = SubResource("Theme_erdme")
 
 [node name="QUIT" type="Button" parent="."]
-offset_left = 759.0
-offset_top = 754.0
-offset_right = 1166.0
-offset_bottom = 857.0
+offset_left = 753.0
+offset_top = 898.0
+offset_right = 1202.0
+offset_bottom = 1027.0
+theme = SubResource("Theme_txsjm")
 theme_override_fonts/font = ExtResource("3_hpr3r")
 theme_override_font_sizes/font_size = 77
-text = "quit"
 
 [connection signal="pressed" from="PLAY" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CONTINUE" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="QUIT" to="." method="_on_quit_pressed"]

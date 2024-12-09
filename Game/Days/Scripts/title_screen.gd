@@ -5,9 +5,12 @@ extends Node2D
 func _on_play_pressed():
 	get_tree().change_scene_to_packed(Start_DayOne)
 	Dialogic.start("Day-1")
-	pass # Replace with function body.
-
+	
 
 func _on_quit_pressed():
 	get_tree().quit()
-	pass # Replace with function body.
+	
+
+
+func _on_continue_pressed():
+	Dialogic.Save.load()

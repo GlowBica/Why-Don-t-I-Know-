@@ -626,7 +626,7 @@ Dad (Sad): “If it hurts a lot, I can continue asking the remaining stores, and
 				[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.5"]
 				*CRASH*
 				[background arg="res://Game/Art/Backgrounds/downfall.png" fade="0.5"]
-				Mallory: “Now the dog is crashing the trash can?”
+				Mallory: “Now the dog is crashing into the trash can?”
 				Mallory: “This was a waste of ti-”
 				Mallory: “...”
 				Mallory: “Are those…”
@@ -780,7 +780,7 @@ SplitUp?
 	Carlos (Neutral): “...”
 	Mallory: “Ugh, I’m getting a really bad headache again…”
 label CarlosSplitUp?
-set {Evidence.CCTV} = -2} = true
+set {Evidence.CCTV2} = true
 Carlos (Guilty): “If it hurts a lot, I can continue asking the remaining stores, and you can stay in the car if you want.”
 - “Good idea…”
 	Mallory: “I think I’ll just stay in the car and hope that this headache goes away.”
@@ -817,7 +817,7 @@ Carlos (Guilty): “If it hurts a lot, I can continue asking the remaining store
 				[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.5"]
 				*CRASH*
 				[background arg="res://Game/Art/Backgrounds/downfall.png" fade="0.5"]
-				Mallory: “Now the dog is crashing the trash can?”
+				Mallory: “Now the dog is crashing into the trash can?”
 				Mallory: “This was a waste of ti-”
 				Mallory: “...”
 				Mallory: “Are those…”
@@ -917,7 +917,9 @@ Carlos (Guilty): “If it hurts a lot, I can continue asking the remaining store
 						Mallory: “...”
 						label end
 						leave Dad
+						leave Carlos
 						leave --All--
 						[background arg="res://Game/Art/Backgrounds/DraftBackground.png" fade="0.0"]
 						[wait time="2.0"]
+						[save slot=""]
 						jump Day-4/
